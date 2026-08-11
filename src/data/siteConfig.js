@@ -1,6 +1,7 @@
 export const siteConfig = {
   companyName: "Hitec Innovations",
-  companySlogan: "Smart Technology. Reliable Security.",
+  companySlogan: "Smart Technology • Security • Automation",
+  logoUrl: "https://i.ibb.co/Jjy6ZSvg/image.png",
   contact: {
     contactPerson: "Riffin Kunnath",
     phone: "+91 7356860085",
@@ -17,6 +18,17 @@ export const siteConfig = {
       instagram: "https://instagram.com"
     }
   },
+  heroes: {
+    home: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=1920&q=80",
+    about: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80",
+    cctv: "https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?auto=format&fit=crop&w=1920&q=80",
+    gate: "https://images.unsplash.com/photo-1558036117-15d82a90b9b1?auto=format&fit=crop&w=1920&q=80",
+    tracking: "https://images.unsplash.com/photo-1506015391300-4802db74de2e?auto=format&fit=crop&w=1920&q=80",
+    automation: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1920&q=80",
+    brands: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1920&q=80",
+    projects: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80",
+    contact: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1920&q=80"
+  },
   homeHero: {
     heading: "Smart Technology. Reliable Security.",
     subheading: "CCTV • Gate Automation • Vehicle Tracking • Home Automation. Hitec Innovations delivers advanced technology, custom software development, and automation engineering designed to scale your business operations.",
@@ -24,7 +36,7 @@ export const siteConfig = {
     secondaryCTA: "Contact Us",
   },
   aboutIntro: {
-    label: "About Hitec Innovations",
+    label: "ABOUT HITEC INNOVATIONS",
     heading: "Smart Technology. Reliable Security.",
     introText: "[Introduce your company here. Explain your history, founding story, or general capability in the technology sector. Hitec Innovations provides high-quality electronic security, automation, and fleet tracking systems to clients across Kerala.]",
     detailedDesc: "[Provide a secondary paragraph detailing specific technologies, core strengths, or operational values of Hitec Innovations. This column highlights your commitment to excellence, professional installation, and round-the-clock service support.]",
@@ -133,11 +145,27 @@ export const siteConfig = {
       ]
     }
   ],
-  brands: [
-    { name: "CP PLUS", imagePlaceholder: "brand_cp_plus" },
-    { name: "HIKVISION", imagePlaceholder: "brand_hikvision" },
-    { name: "D-Link", imagePlaceholder: "brand_d_link" },
-    { name: "IMOU", imagePlaceholder: "brand_imou" }
+  cctvBrands: [
+    { 
+      name: "CP PLUS", 
+      imageUrl: "https://i.ibb.co/zTGyv5DK/Whats-App-Image-2026-08-10-at-7-17-32-PM.jpg",
+      desc: "[Professional surveillance cameras, dynamic speed domes, network NVRs, and customized home protection systems.]"
+    },
+    { 
+      name: "HIKVISION", 
+      imageUrl: "https://i.ibb.co/G3N6PbK7/Whats-App-Image-2026-08-10-at-7-17-39-PM.jpg",
+      desc: "[Enterprise security camera setups, thermal imaging cameras, and AI-powered smart movement analysis.]"
+    },
+    { 
+      name: "D-Link", 
+      imageUrl: "https://i.ibb.co/WvS1KM39/Whats-App-Image-2026-08-10-at-7-20-19-PM.jpg",
+      desc: "[Sleek Wi-Fi routing switches, PoE injectors, secure internet layers, and Ethernet hub installations.]"
+    },
+    { 
+      name: "IMOU", 
+      imageUrl: "https://i.ibb.co/v6GpVpZ2/Whats-App-Image-2026-08-10-at-7-20-39-PM.jpg",
+      desc: "[Consumer smart Wi-Fi cameras, remote sirens, automatic floodlight feeds, and personal cloud video logs.]"
+    }
   ],
   whyChooseUs: {
     heading: "Why Choose Hitec Innovations?",
@@ -219,3 +247,5 @@ export const siteConfig = {
     buttonText: "Contact Us"
   }
 };
+
+siteConfig.brands = siteConfig.cctvBrands;

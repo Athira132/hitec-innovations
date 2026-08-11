@@ -10,22 +10,16 @@ export default function Services() {
   return (
     <div className="page-top-spacer">
       {/* ---------------- HERO BANNER ---------------- */}
-      <section className="bg-dark-section section-padding" style={{ position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
-        <div style={{
-          position: 'absolute',
-          top: '-20%',
-          width: '100%',
-          height: '100%',
-          background: 'radial-gradient(circle at center, hsla(165, 85%, 40%, 0.15) 0%, transparent 60%)',
-          pointerEvents: 'none'
-        }}></div>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1rem' }}>
-            Our Services
-          </h1>
-          <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
-            Discover our high-performance technology portfolios designed to scale digital systems, secure applications, and automate operations.
-          </p>
+      <section className="custom-hero-banner page-top-spacer" style={{ backgroundImage: `url(${siteConfig.heroes.about})` }}>
+        <div className="container">
+          <div style={{ maxWidth: '650px' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1rem', color: 'var(--color-text-light)' }}>
+              Our Services
+            </h1>
+            <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', lineHeight: '1.6' }}>
+              Discover our high-performance technology portfolios designed to secure residential assets, automate entrances, track vehicles, and connect smart homes.
+            </p>
+          </div>
         </div>
       </section>
 

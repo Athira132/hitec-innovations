@@ -10,22 +10,16 @@ export default function Brands() {
   return (
     <div className="page-top-spacer">
       {/* ---------------- HERO BANNER ---------------- */}
-      <section className="bg-dark-section section-padding" style={{ position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
-        <div style={{
-          position: 'absolute',
-          top: '-20%',
-          width: '100%',
-          height: '100%',
-          background: 'radial-gradient(circle at center, hsla(354, 75%, 45%, 0.15) 0%, transparent 60%)',
-          pointerEvents: 'none'
-        }}></div>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1rem' }}>
-            CCTV Brands We Work With
-          </h1>
-          <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
-            Hitec Innovations partners with trusted global leaders in security surveillance and networking.
-          </p>
+      <section className="custom-hero-banner page-top-spacer" style={{ backgroundImage: `url(${siteConfig.heroes.brands})` }}>
+        <div className="container">
+          <div style={{ maxWidth: '650px' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1rem', color: 'var(--color-text-light)' }}>
+              CCTV Brands We Work With
+            </h1>
+            <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', lineHeight: '1.6' }}>
+              Hitec Innovations partners with trusted global leaders in security surveillance and networking.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -55,25 +49,27 @@ export default function Brands() {
                   backgroundColor: 'var(--color-light-bg)'
                 }}
               >
-                {/* Logo Image Placeholder Box */}
+                {/* Actual Logo Image Box */}
                 <div 
-                  className="img-placeholder square"
                   style={{
-                    width: '100px',
+                    width: '100%',
                     height: '100px',
-                    borderRadius: 'var(--border-radius-md)',
-                    border: '1px solid var(--color-light-border)',
                     backgroundColor: 'var(--color-light)',
-                    marginBottom: '1.25rem',
+                    borderRadius: 'var(--border-radius-sm)',
                     padding: '0.5rem',
                     display: 'flex',
-                    flexDirection: 'column',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    marginBottom: '1.25rem',
+                    overflow: 'hidden',
+                    border: '1px solid var(--color-light-border)'
                   }}
                 >
-                  <ImageIcon size={24} style={{ opacity: 0.3, color: 'var(--color-text-muted-dark)', marginBottom: '0.25rem' }} />
-                  <span style={{ fontSize: '0.65rem', color: 'var(--color-text-muted-dark)', fontWeight: 600 }}>{brand.imagePlaceholder}</span>
+                  <img 
+                    src={brand.imageUrl} 
+                    alt={`${brand.name} logo`} 
+                    style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }} 
+                  />
                 </div>
                 <h3 className="card-title" style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0 }}>
                   {brand.name}

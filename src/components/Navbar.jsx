@@ -128,8 +128,13 @@ export default function Navbar() {
       <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container nav-container">
           {/* Logo */}
-          <NavLink to="/" className="logo">
-            {siteConfig.companyName.split(' ')[0]} <span>{siteConfig.companyName.split(' ')[1] || 'Innovations'}</span>
+          <NavLink to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
+            <div className="navbar-logo-circle">
+              <img src={siteConfig.logoUrl} alt="Hitec Innovations Logo" />
+            </div>
+            <span style={{ fontSize: '1.2rem', fontWeight: 800, fontFamily: 'var(--font-heading)', color: 'var(--color-text-light)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
+              Hitec <span style={{ color: 'var(--color-primary)' }}>Innovations</span>
+            </span>
           </NavLink>
 
           {/* Desktop Navigation */}

@@ -10,22 +10,16 @@ export default function Projects() {
   return (
     <div className="page-top-spacer">
       {/* ---------------- HERO BANNER ---------------- */}
-      <section className="bg-dark-section section-padding" style={{ position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
-        <div style={{
-          position: 'absolute',
-          top: '-20%',
-          width: '100%',
-          height: '100%',
-          background: 'radial-gradient(circle at center, hsla(165, 85%, 40%, 0.15) 0%, transparent 60%)',
-          pointerEvents: 'none'
-        }}></div>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1rem' }}>
-            Projects & Portfolio
-          </h1>
-          <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
-            Explore our real-world tech implementations across cloud infrastructure, security hardening, and IoT control systems.
-          </p>
+      <section className="custom-hero-banner page-top-spacer" style={{ backgroundImage: `url(${siteConfig.heroes.projects})` }}>
+        <div className="container">
+          <div style={{ maxWidth: '650px' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1rem', color: 'var(--color-text-light)' }}>
+              Projects & Portfolio
+            </h1>
+            <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', lineHeight: '1.6' }}>
+              Explore our real-world tech implementations across CCTV, automated gates, GPS vehicle tracking, and smart home systems.
+            </p>
+          </div>
         </div>
       </section>
 
