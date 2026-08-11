@@ -57,8 +57,25 @@ export default function Projects() {
             subtitle="Hitec Innovations delivers robust, high-performance systems. Browse through our select client projects to view the technology stacks and outcomes."
           />
 
-          {/* Grid Layout: 3 columns desktop, 2 columns tablet, 1 column mobile */}
-          <div className="grid-3" style={{ gap: '2.5rem' }}>
+          <style>{`
+            .hitec-projects-grid {
+              display: grid;
+              gap: 2rem;
+              grid-template-columns: repeat(4, 1fr);
+            }
+            @media (max-width: 1024px) and (min-width: 641px) {
+              .hitec-projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            @media (max-width: 640px) {
+              .hitec-projects-grid {
+                grid-template-columns: 1fr;
+              }
+            }
+          `}</style>
+
+          <div className="hitec-projects-grid">
             {projects.map((project) => (
               <div 
                 key={project.id} 
@@ -72,7 +89,7 @@ export default function Projects() {
                 }}
               >
                 {/* Project Image Container */}
-                <div style={{ width: '100%', height: '220px', overflow: 'hidden', borderBottom: '1px solid var(--color-light-border)' }}>
+                <div style={{ width: '100%', height: '200px', overflow: 'hidden', borderBottom: '1px solid var(--color-light-border)' }}>
                   <img 
                     src={project.image} 
                     alt={project.title} 
@@ -81,11 +98,11 @@ export default function Projects() {
                 </div>
 
                 {/* Details Content */}
-                <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                   {/* Category Label */}
                   <span 
                     style={{ 
-                      fontSize: '0.75rem', 
+                      fontSize: '0.7rem', 
                       textTransform: 'uppercase', 
                       fontWeight: 700, 
                       color: 'var(--color-primary)', 
@@ -96,11 +113,11 @@ export default function Projects() {
                     {project.category}
                   </span>
 
-                  <h3 className="card-title" style={{ fontSize: '1.3rem', marginBottom: '0.75rem' }}>
+                  <h3 className="card-title" style={{ fontSize: '1.15rem', marginBottom: '0.75rem', lineHeight: '1.3' }}>
                     {project.title}
                   </h3>
 
-                  <p className="card-desc" style={{ fontSize: '0.9rem', marginBottom: '1.5rem', lineHeight: '1.5' }}>
+                  <p className="card-desc" style={{ fontSize: '0.85rem', marginBottom: '1.5rem', lineHeight: '1.5', color: 'var(--color-text-muted-dark)' }}>
                     {project.longDesc}
                   </p>
 

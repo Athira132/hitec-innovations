@@ -109,12 +109,12 @@ export default function FloatingButtons() {
         
         {/* SECOND BUTTON — CALL */}
         <a 
-          href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`} 
+          href="tel:+917356860085" 
           className="hitec-floating-btn call-widget"
-          aria-label="Call Riffin Kunnath"
+          aria-label="Call Hitec Innovations"
         >
           <Phone size={22} fill="currentColor" style={{ strokeWidth: 0 }} />
-          <span className="widget-tooltip">Call: {siteConfig.contact.phone}</span>
+          <span className="widget-tooltip">Call: +91 7356860085</span>
         </a>
       </div>
     </>

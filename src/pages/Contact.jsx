@@ -115,152 +115,92 @@ export default function Contact() {
 
       {/* ---------------- CONTACT LAYOUT ---------------- */}
       <section className="section-padding">
-        <div className="container">
+        <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <SectionHeader 
             label="Get In Touch"
             title="Start a Technical Consultation"
-            subtitle="Fill out the contact form below or reach us directly using our Thrissur office coordinates. We typically respond within 24 business hours."
+            subtitle="Fill out the contact form below or reach us directly using our Thrissur office coordinates."
           />
 
-          <div className="grid-2" style={{ gap: '4rem', alignItems: 'start' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
             
-            {/* Left Column: Contact details & Map */}
-            <div>
-              <div 
-                className="premium-card" 
-                style={{ 
-                  padding: '2.5rem', 
-                  marginBottom: '2.5rem', 
-                  backgroundColor: 'var(--color-light-bg)' 
-                }}
-              >
-                <h3 className="card-title" style={{ fontSize: '1.4rem', marginBottom: '1.5rem' }}>Office Information</h3>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
-                    <div style={{ color: 'var(--color-primary)', marginTop: '3px' }}><MapPin size={20} /></div>
-                    <div>
-                      <h4 style={{ fontSize: '0.95rem', fontWeight: 700 }}>Headquarters Address</h4>
-                      <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', marginTop: '0.25rem', lineHeight: '1.4' }}>{contact.address}</p>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
-                    <div style={{ color: 'var(--color-primary)', marginTop: '3px' }}><Phone size={20} /></div>
-                    <div>
-                      <h4 style={{ fontSize: '0.95rem', fontWeight: 700 }}>Phone (Riffin Kunnath)</h4>
-                      <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', marginTop: '0.25rem' }}>{contact.phone}</p>
-                      <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} style={{ fontSize: '0.8rem', color: 'var(--color-primary)', fontWeight: 600, display: 'inline-block', marginTop: '0.25rem' }}>
-                        Call Now &rarr;
-                      </a>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
-                    <div style={{ color: 'var(--color-primary)', marginTop: '3px' }}><Mail size={20} /></div>
-                    <div>
-                      <h4 style={{ fontSize: '0.95rem', fontWeight: 700 }}>Email Support</h4>
-                      <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', marginTop: '0.25rem' }}>{contact.email}</p>
-                      <a href={`mailto:${contact.email}`} style={{ fontSize: '0.8rem', color: 'var(--color-primary)', fontWeight: 600, display: 'inline-block', marginTop: '0.25rem' }}>
-                        Send Email &rarr;
-                      </a>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
-                    <div style={{ color: 'var(--color-primary)', marginTop: '3px' }}><Clock size={20} /></div>
-                    <div>
-                      <h4 style={{ fontSize: '0.95rem', fontWeight: 700 }}>Business Hours</h4>
-                      <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', marginTop: '0.25rem' }}>{contact.hours}</p>
-                    </div>
-                  </div>
-
-                  {/* GSTIN Field */}
-                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'start', borderTop: '1px solid var(--color-light-border)', paddingTop: '1.5rem', marginTop: '0.5rem' }}>
-                    <div style={{ color: 'var(--color-primary)', marginTop: '3px' }}><ShieldCheck size={20} /></div>
-                    <div>
-                      <h4 style={{ fontSize: '0.95rem', fontWeight: 700 }}>GST Registration Details</h4>
-                      <p style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--color-dark)', marginTop: '0.25rem' }}>
-                        GSTIN: {contact.gstin}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* WhatsApp Quick CTA & Digital Visiting Card */}
-                <div style={{ marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid var(--color-light-border)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            {/* 1. Contact Information Card */}
+            <div 
+              className="premium-card" 
+              style={{ 
+                padding: '2.5rem', 
+                backgroundColor: 'var(--color-light-bg)',
+                border: '1px solid var(--color-light-border)'
+              }}
+            >
+              <h3 className="card-title" style={{ fontSize: '1.4rem', marginBottom: '1.5rem', color: 'var(--color-dark)' }}>Office Information</h3>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <div style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
+                  <div style={{ color: 'var(--color-primary)', marginTop: '3px' }}><MapPin size={20} /></div>
                   <div>
-                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.5rem' }}>Need immediate assistance?</h4>
-                    <a 
-                      href={contact.whatsappLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="btn btn-primary"
-                      style={{ width: '100%', backgroundColor: 'hsl(142, 70%, 45%)', borderColor: 'hsl(142, 70%, 45%)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
-                    >
-                      <MessageSquare size={18} /> Chat on WhatsApp ({contact.whatsapp})
-                    </a>
-                  </div>
-                  <div>
-                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.5rem' }}>Digital Visiting Card</h4>
-                    <a 
-                      href="https://ibb.co/chCfqs6V" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="btn btn-secondary"
-                      style={{ width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
-                    >
-                      View Digital Visiting Card &rarr;
-                    </a>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-dark)' }}>Headquarters Address</h4>
+                    <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', marginTop: '0.25rem', lineHeight: '1.5' }}>{contact.address}</p>
                   </div>
                 </div>
-              </div>
 
-              {/* Find Us Section with Google Map */}
-              <div 
-                className="premium-card" 
-                style={{ 
-                  marginTop: '2rem',
-                  padding: '2.5rem', 
-                  backgroundColor: 'var(--color-light-bg)' 
-                }}
-              >
-                <h3 className="card-title" style={{ fontSize: '1.4rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Map size={22} style={{ color: 'var(--color-primary)' }} /> Find Us
-                </h3>
-                <div 
-                  className="img-placeholder" 
-                  style={{ 
-                    minHeight: '200px', 
-                    boxShadow: 'var(--shadow-sm)',
-                    backgroundColor: 'var(--color-light-surface)',
-                    color: 'var(--color-text-dark)',
-                    border: '1px solid var(--color-light-border)',
-                    marginBottom: '1.5rem'
-                  }}
-                >
-                  <Map size={36} style={{ color: 'var(--color-primary)', marginBottom: '0.5rem', opacity: 0.8 }} />
-                  <span className="placeholder-title" style={{ color: 'var(--color-dark)', fontSize: '0.95rem', fontWeight: 700 }}>Mission Quarters, Thrissur</span>
-                  <span className="placeholder-size" style={{ color: 'var(--color-text-muted-dark)', fontSize: '0.85rem' }}>Near St. Joseph Convent Boarding</span>
+                <div style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
+                  <div style={{ color: 'var(--color-primary)', marginTop: '3px' }}><Phone size={20} /></div>
+                  <div>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-dark)' }}>Phone Call Contacts</h4>
+                    <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', marginTop: '0.25rem' }}>
+                      <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} style={{ color: 'inherit', textDecoration: 'none', fontWeight: 600 }}>{contact.phone}</a> (Office desk)
+                    </p>
+                    <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', marginTop: '0.25rem' }}>
+                      <a href="tel:+918281194990" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 600 }}>+91 82811 94990</a> (Riffin Kunnath)
+                    </p>
+                  </div>
                 </div>
-                <a 
-                  href="https://maps.google.com/?q=35/41/92,+Ground+Floor,+Near+St.+Joseph+Convent+Boarding,+Mission+Quarters,+Thrissur+-+680001" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn btn-primary"
-                  style={{ width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
-                >
-                  View Location on Google Maps &rarr;
-                </a>
+
+                <div style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
+                  <div style={{ color: 'var(--color-primary)', marginTop: '3px' }}><Mail size={20} /></div>
+                  <div>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-dark)' }}>Email Address</h4>
+                    <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', marginTop: '0.25rem' }}>
+                      <a href={`mailto:${contact.email}`} style={{ color: 'inherit', textDecoration: 'none', fontWeight: 600 }}>{contact.email}</a>
+                    </p>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
+                  <div style={{ color: 'var(--color-primary)', marginTop: '3px' }}><Clock size={20} /></div>
+                  <div>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-dark)' }}>Operational Hours</h4>
+                    <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', marginTop: '0.25rem' }}>{contact.hours}</p>
+                  </div>
+                </div>
+
+                {/* GSTIN Field */}
+                <div style={{ display: 'flex', gap: '1rem', alignItems: 'start', borderTop: '1px solid var(--color-light-border)', paddingTop: '1.5rem', marginTop: '0.5rem' }}>
+                  <div style={{ color: 'var(--color-primary)', marginTop: '3px' }}><ShieldCheck size={20} /></div>
+                  <div>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-dark)' }}>GST Registration Details</h4>
+                    <p style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--color-primary)', marginTop: '0.25rem' }}>
+                      GSTIN: {contact.gstin}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Right Column: Form */}
-            <div className="premium-card" style={{ padding: '2.5rem' }}>
-              <h3 className="card-title" style={{ fontSize: '1.4rem', marginBottom: '1.5rem' }}>Send Us a Message</h3>
+            {/* 2. Contact Form Card */}
+            <div 
+              className="premium-card" 
+              style={{ 
+                padding: '2.5rem', 
+                backgroundColor: 'var(--color-light-bg)',
+                border: '1px solid var(--color-light-border)'
+              }}
+            >
+              <h3 className="card-title" style={{ fontSize: '1.4rem', marginBottom: '1.5rem', color: 'var(--color-dark)' }}>Send Us a Message</h3>
 
               {isSubmitted && (
-                <div className="form-success-alert" style={{ display: 'flex', gap: '0.75rem', alignItems: 'start' }}>
+                <div className="form-success-alert" style={{ display: 'flex', gap: '0.75rem', alignItems: 'start', marginBottom: '1.5rem' }}>
                   <div style={{ color: 'var(--color-success)', display: 'flex', marginTop: '2px' }}><Check size={20} /></div>
                   <div>
                     <strong style={{ display: 'block', marginBottom: '0.25rem' }}>Message Sent Successfully!</strong>
@@ -269,8 +209,8 @@ export default function Contact() {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} noValidate>
-                <div className="form-group">
+              <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                <div className="form-group" style={{ marginBottom: 0 }}>
                   <label htmlFor="name" className="form-label">Full Name</label>
                   <input 
                     type="text" 
@@ -284,7 +224,7 @@ export default function Contact() {
                   {errors.name && <p className="form-error-msg">{errors.name}</p>}
                 </div>
 
-                <div className="form-group">
+                <div className="form-group" style={{ marginBottom: 0 }}>
                   <label htmlFor="email" className="form-label">Email Address</label>
                   <input 
                     type="email" 
@@ -298,7 +238,7 @@ export default function Contact() {
                   {errors.email && <p className="form-error-msg">{errors.email}</p>}
                 </div>
 
-                <div className="form-group">
+                <div className="form-group" style={{ marginBottom: 0 }}>
                   <label htmlFor="subject" className="form-label">Subject</label>
                   <input 
                     type="text" 
@@ -312,7 +252,7 @@ export default function Contact() {
                   {errors.subject && <p className="form-error-msg">{errors.subject}</p>}
                 </div>
 
-                <div className="form-group">
+                <div className="form-group" style={{ marginBottom: 0 }}>
                   <label htmlFor="message" className="form-label">Message Details</label>
                   <textarea 
                     id="message" 
@@ -326,10 +266,130 @@ export default function Contact() {
                   {errors.message && <p className="form-error-msg">{errors.message}</p>}
                 </div>
 
-                <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+                <button type="submit" className="btn btn-primary" style={{ width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
                   Send Message <Send size={16} />
                 </button>
               </form>
+            </div>
+
+            {/* 3. Find Us — Actual Google Map Card */}
+            <div 
+              className="premium-card" 
+              style={{ 
+                padding: '2.5rem', 
+                backgroundColor: 'var(--color-light-bg)',
+                border: '1px solid var(--color-light-border)'
+              }}
+            >
+              <h3 className="card-title" style={{ fontSize: '1.4rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-dark)' }}>
+                <Map size={22} style={{ color: 'var(--color-primary)' }} /> Find Us
+              </h3>
+              
+              {/* Embedded Google Map iframe */}
+              <div 
+                style={{ 
+                  width: '100%', 
+                  height: '350px', 
+                  borderRadius: 'var(--border-radius-sm)', 
+                  overflow: 'hidden', 
+                  border: '1px solid var(--color-light-border)',
+                  marginBottom: '1.5rem',
+                  backgroundColor: '#eeeeee'
+                }}
+              >
+                <iframe 
+                  title="Hitec Innovations Google Maps Location"
+                  src="https://maps.google.com/maps?q=35/41/92,%20Ground%20Floor,%20Near%20St.%20Joseph%20Convent%20Boarding,%20Mission%20Quarters,%20Thrissur%20-%20680001&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', margin: 0, lineHeight: '1.5' }}>
+                  <strong>Address:</strong> {contact.address} (Near St. Joseph Convent Boarding, Mission Quarters)
+                </p>
+                <a 
+                  href="https://maps.google.com/?q=35/41/92,+Ground+Floor,+Near+St.+Joseph+Convent+Boarding,+Mission+Quarters,+Thrissur+-+680001" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-primary"
+                  style={{ width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+                >
+                  View Location on Google Maps &rarr;
+                </a>
+              </div>
+            </div>
+
+            {/* 4. Digital Visiting Card Card */}
+            <div 
+              className="premium-card" 
+              style={{ 
+                padding: '2.5rem', 
+                backgroundColor: 'var(--color-light-bg)',
+                border: '1px solid var(--color-light-border)',
+                textAlign: 'center'
+              }}
+            >
+              <h3 className="card-title" style={{ fontSize: '1.4rem', marginBottom: '0.5rem', color: 'var(--color-dark)' }}>Digital Visiting Card</h3>
+              <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', marginBottom: '1.5rem' }}>
+                Access our contact details, location, and quick links directly on your device.
+              </p>
+              <a 
+                href="https://ibb.co/chCfqs6V" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn btn-secondary"
+                style={{ width: '100%', maxWidth: '360px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', margin: '0 auto' }}
+              >
+                View Digital Visiting Card &rarr;
+              </a>
+            </div>
+
+            {/* 5. Social Media — Facebook + YouTube Card */}
+            <div 
+              className="premium-card" 
+              style={{ 
+                padding: '2.5rem', 
+                backgroundColor: 'var(--color-light-bg)',
+                border: '1px solid var(--color-light-border)',
+                textAlign: 'center'
+              }}
+            >
+              <h3 className="card-title" style={{ fontSize: '1.4rem', marginBottom: '0.5rem', color: 'var(--color-dark)' }}>Social Media</h3>
+              <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', marginBottom: '1.5rem' }}>
+                Follow our official updates on social platforms.
+              </p>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+                <a 
+                  href={contact.socials.facebook} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-secondary"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+                >
+                  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h3V1h-4c-2.5 0-5 1.5-5 4v3z"/>
+                  </svg>
+                  Facebook
+                </a>
+                <a 
+                  href={contact.socials.youtube} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-secondary"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+                >
+                  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  YouTube
+                </a>
+              </div>
             </div>
 
           </div>

@@ -26,8 +26,8 @@ export const siteConfig = {
     hours: "Mon - Sat: 09:00 AM - 06:00 PM | Sun: Closed",
     whatsappLink: "https://wa.me/918281194990?text=Hello%20Hitec%20Innovations,%20I%20would%20like%20to%20inquire%20about%20your%20services.",
     socials: {
-      facebook: "https://facebook.com",
-      youtube: "https://youtube.com"
+      facebook: "https://www.facebook.com/hitec.innovations",
+      youtube: "https://www.youtube.com"
     }
   },
   homeHero: {
