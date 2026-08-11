@@ -9,8 +9,9 @@ export default function Contact() {
   // Form states
   const [formData, setFormData] = useState({
     name: '',
+    phone: '',
     email: '',
-    subject: '',
+    service: '',
     message: ''
   });
   const [errors, setErrors] = useState({});
@@ -46,13 +47,16 @@ export default function Contact() {
     if (!formData.name.trim()) {
       newErrors.name = 'Full name is required.';
     }
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required.';
+    }
     if (!formData.email.trim()) {
       newErrors.email = 'Email address is required.';
     } else if (!validateEmail(formData.email)) {
       newErrors.email = 'Please enter a valid email address.';
     }
-    if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required.';
+    if (!formData.service) {
+      newErrors.service = 'Please select a service.';
     }
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required.';
@@ -65,8 +69,9 @@ export default function Contact() {
       setIsSubmitted(true);
       setFormData({
         name: '',
+        phone: '',
         email: '',
-        subject: '',
+        service: '',
         message: ''
       });
     }
@@ -115,7 +120,7 @@ export default function Contact() {
 
       {/* ---------------- CONTACT LAYOUT ---------------- */}
       <section className="section-padding">
-        <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <SectionHeader 
             label="Get In Touch"
             title="Start a Technical Consultation"
@@ -188,140 +193,174 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* 2. Contact Form Card */}
-            <div 
-              className="premium-card" 
-              style={{ 
-                padding: '2.5rem', 
-                backgroundColor: 'var(--color-light-bg)',
-                border: '1px solid var(--color-light-border)'
-              }}
-            >
-              <h3 className="card-title" style={{ fontSize: '1.4rem', marginBottom: '1.5rem', color: 'var(--color-dark)' }}>Send Us a Message</h3>
+            {/* 2 & 3. Side-by-Side: Form and Location */}
+            <style>{`
+              .hitec-contact-row {
+                display: grid;
+                grid-template-columns: 55% 45%;
+                gap: 2rem;
+                align-items: stretch;
+              }
+              @media (max-width: 1024px) {
+                .hitec-contact-row {
+                  grid-template-columns: 1fr;
+                  gap: 2.5rem;
+                }
+              }
+            `}</style>
 
-              {isSubmitted && (
-                <div className="form-success-alert" style={{ display: 'flex', gap: '0.75rem', alignItems: 'start', marginBottom: '1.5rem' }}>
-                  <div style={{ color: 'var(--color-success)', display: 'flex', marginTop: '2px' }}><Check size={20} /></div>
-                  <div>
-                    <strong style={{ display: 'block', marginBottom: '0.25rem' }}>Message Sent Successfully!</strong>
-                    <span>Thank you for reaching out to Hitec Innovations. Riffin Kunnath or a systems engineer will contact you shortly.</span>
-                  </div>
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <div className="form-group" style={{ marginBottom: 0 }}>
-                  <label htmlFor="name" className="form-label">Full Name</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
-                    value={formData.name} 
-                    onChange={handleChange}
-                    className="form-control" 
-                    placeholder="e.g. John Doe"
-                  />
-                  {errors.name && <p className="form-error-msg">{errors.name}</p>}
-                </div>
-
-                <div className="form-group" style={{ marginBottom: 0 }}>
-                  <label htmlFor="email" className="form-label">Email Address</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    value={formData.email} 
-                    onChange={handleChange}
-                    className="form-control" 
-                    placeholder="e.g. john@company.com"
-                  />
-                  {errors.email && <p className="form-error-msg">{errors.email}</p>}
-                </div>
-
-                <div className="form-group" style={{ marginBottom: 0 }}>
-                  <label htmlFor="subject" className="form-label">Subject</label>
-                  <input 
-                    type="text" 
-                    id="subject" 
-                    name="subject" 
-                    value={formData.subject} 
-                    onChange={handleChange}
-                    className="form-control" 
-                    placeholder="e.g. CCTV Installation Enquiry"
-                  />
-                  {errors.subject && <p className="form-error-msg">{errors.subject}</p>}
-                </div>
-
-                <div className="form-group" style={{ marginBottom: 0 }}>
-                  <label htmlFor="message" className="form-label">Message Details</label>
-                  <textarea 
-                    id="message" 
-                    name="message" 
-                    value={formData.message} 
-                    onChange={handleChange}
-                    className="form-control" 
-                    rows="5" 
-                    placeholder="[Write your inquiry detail here. Describe your business requirements or request a custom automation integration...]"
-                  ></textarea>
-                  {errors.message && <p className="form-error-msg">{errors.message}</p>}
-                </div>
-
-                <button type="submit" className="btn btn-primary" style={{ width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                  Send Message <Send size={16} />
-                </button>
-              </form>
-            </div>
-
-            {/* 3. Find Us — Actual Google Map Card */}
-            <div 
-              className="premium-card" 
-              style={{ 
-                padding: '2.5rem', 
-                backgroundColor: 'var(--color-light-bg)',
-                border: '1px solid var(--color-light-border)'
-              }}
-            >
-              <h3 className="card-title" style={{ fontSize: '1.4rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-dark)' }}>
-                <Map size={22} style={{ color: 'var(--color-primary)' }} /> Find Us
-              </h3>
-              
-              {/* Embedded Google Map iframe */}
+            <div className="hitec-contact-row">
+              {/* LEFT SIDE: Contact Form Card */}
               <div 
+                className="premium-card" 
                 style={{ 
-                  width: '100%', 
-                  height: '350px', 
-                  borderRadius: 'var(--border-radius-sm)', 
-                  overflow: 'hidden', 
+                  padding: '2.5rem', 
+                  backgroundColor: 'var(--color-light-bg)',
                   border: '1px solid var(--color-light-border)',
-                  marginBottom: '1.5rem',
-                  backgroundColor: '#eeeeee'
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
+                  justifyContent: 'space-between'
                 }}
               >
-                <iframe 
-                  title="Hitec Innovations Google Maps Location"
-                  src="https://maps.google.com/maps?q=35/41/92,%20Ground%20Floor,%20Near%20St.%20Joseph%20Convent%20Boarding,%20Mission%20Quarters,%20Thrissur%20-%20680001&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen="" 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+                <div>
+                  <h3 className="card-title" style={{ fontSize: '1.4rem', marginBottom: '1.5rem', color: 'var(--color-dark)' }}>Send Us an Enquiry</h3>
+
+                  {isSubmitted && (
+                    <div className="form-success-alert" style={{ display: 'flex', gap: '0.75rem', alignItems: 'start', marginBottom: '1.5rem' }}>
+                      <div style={{ color: 'var(--color-success)', display: 'flex', marginTop: '2px' }}><Check size={20} /></div>
+                      <div>
+                        <strong style={{ display: 'block', marginBottom: '0.25rem' }}>Enquiry Sent Successfully!</strong>
+                        <span>Thank you. Riffin Kunnath or a systems engineer will contact you shortly.</span>
+                      </div>
+                    </div>
+                  )}
+
+                  <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                    <div className="form-group" style={{ marginBottom: 0 }}>
+                      <label htmlFor="name" className="form-label">Full Name</label>
+                      <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        value={formData.name} 
+                        onChange={handleChange}
+                        className="form-control" 
+                        placeholder="e.g. John Doe"
+                      />
+                      {errors.name && <p className="form-error-msg">{errors.name}</p>}
+                    </div>
+
+                    <div className="form-group" style={{ marginBottom: 0 }}>
+                      <label htmlFor="phone" className="form-label">Phone Number</label>
+                      <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        value={formData.phone} 
+                        onChange={handleChange}
+                        className="form-control" 
+                        placeholder="e.g. +91 98765 43210"
+                      />
+                      {errors.phone && <p className="form-error-msg">{errors.phone}</p>}
+                    </div>
+
+                    <div className="form-group" style={{ marginBottom: 0 }}>
+                      <label htmlFor="email" className="form-label">Email Address</label>
+                      <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        value={formData.email} 
+                        onChange={handleChange}
+                        className="form-control" 
+                        placeholder="e.g. john@company.com"
+                      />
+                      {errors.email && <p className="form-error-msg">{errors.email}</p>}
+                    </div>
+
+                    <div className="form-group" style={{ marginBottom: 0 }}>
+                      <label htmlFor="service" className="form-label">Select Service</label>
+                      <select 
+                        id="service" 
+                        name="service" 
+                        value={formData.service} 
+                        onChange={handleChange}
+                        className="form-control"
+                        style={{ appearance: 'none', backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1em' }}
+                      >
+                        <option value="">-- Choose a Service --</option>
+                        <option value="CCTV Installation">CCTV Installation</option>
+                        <option value="Gate Automation">Gate Automation</option>
+                        <option value="Vehicle Tracking">Vehicle Tracking</option>
+                        <option value="Home Automation">Home Automation</option>
+                        <option value="Other Inquiry">Other Inquiry</option>
+                      </select>
+                      {errors.service && <p className="form-error-msg">{errors.service}</p>}
+                    </div>
+
+                    <div className="form-group" style={{ marginBottom: 0 }}>
+                      <label htmlFor="message" className="form-label">Message Details</label>
+                      <textarea 
+                        id="message" 
+                        name="message" 
+                        value={formData.message} 
+                        onChange={handleChange}
+                        className="form-control" 
+                        rows="4" 
+                        placeholder="Describe your security or automation requirements..."
+                      ></textarea>
+                      {errors.message && <p className="form-error-msg">{errors.message}</p>}
+                    </div>
+
+                    <button type="submit" className="btn btn-primary" style={{ width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: '0.5rem' }}>
+                      Send Enquiry <Send size={16} />
+                    </button>
+                  </form>
+                </div>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', margin: 0, lineHeight: '1.5' }}>
-                  <strong>Address:</strong> {contact.address} (Near St. Joseph Convent Boarding, Mission Quarters)
-                </p>
-                <a 
-                  href="https://maps.google.com/?q=35/41/92,+Ground+Floor,+Near+St.+Joseph+Convent+Boarding,+Mission+Quarters,+Thrissur+-+680001" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn btn-primary"
-                  style={{ width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
-                >
-                  View Location on Google Maps &rarr;
-                </a>
+              {/* RIGHT SIDE: Find Us Card with Google Map */}
+              <div 
+                className="premium-card" 
+                style={{ 
+                  padding: 0, 
+                  backgroundColor: 'var(--color-light-bg)',
+                  border: '1px solid var(--color-light-border)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
+                  overflow: 'hidden'
+                }}
+              >
+                <div style={{ flexGrow: 1, position: 'relative', minHeight: '400px', height: '100%' }}>
+                  <iframe 
+                    title="Hitec Innovations Google Maps Location"
+                    src="https://maps.google.com/maps?q=35/41/92,%20Ground%20Floor,%20Near%20St.%20Joseph%20Convent%20Boarding,%20Mission%20Quarters,%20Thrissur%20-%20680001&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
+                    allowFullScreen="" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+                
+                <div style={{ padding: '1.5rem', borderTop: '1px solid var(--color-light-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', backgroundColor: 'var(--color-light-bg)' }}>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--color-text-muted-dark)', maxWidth: '280px' }}>
+                    <strong>Hitec Innovations Location</strong><br />
+                    {contact.address}
+                  </div>
+                  <a 
+                    href="https://maps.google.com/?q=35/41/92,+Ground+Floor,+Near+St.+Joseph+Convent+Boarding,+Mission+Quarters,+Thrissur+-+680001" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-primary"
+                    style={{ padding: '0.5rem 1.25rem', fontSize: '0.8rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', whiteSpace: 'nowrap' }}
+                  >
+                    View on Google Maps &rarr;
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -340,7 +379,7 @@ export default function Contact() {
                 Access our contact details, location, and quick links directly on your device.
               </p>
               <a 
-                href="https://ibb.co/chCfqs6V" 
+                href="https://www.vkard.pro/hitec-innovations" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="btn btn-secondary"
