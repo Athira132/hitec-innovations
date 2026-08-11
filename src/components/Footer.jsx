@@ -26,53 +26,19 @@ export default function Footer() {
         <div className="grid-4 footer-top">
           {/* Brand Col */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-              <div style={{
-                width: '42px',
-                height: '42px',
-                borderRadius: '50%',
-                overflow: 'hidden',
-                backgroundColor: '#ffffff',
-                border: '2px solid var(--color-primary)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0
-              }}>
+            <div style={{ marginBottom: '1.25rem' }}>
+              <Link to="/" style={{ display: 'inline-block', textDecoration: 'none' }}>
                 <img 
                   src={siteConfig.logo} 
-                  alt="Hitec Innovations Logo" 
+                  alt="Hitec Innovations" 
                   style={{
-                    width: '88%',
-                    height: '88%',
+                    height: '38px',
+                    width: 'auto',
                     objectFit: 'contain',
-                    borderRadius: '50%'
+                    display: 'block'
                   }} 
                 />
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ 
-                  fontFamily: 'var(--font-heading)',
-                  fontWeight: 800, 
-                  fontSize: '1.1rem', 
-                  lineHeight: 1, 
-                  color: 'var(--color-text-light)',
-                  letterSpacing: '-0.5px'
-                }}>
-                  HITEC
-                </span>
-                <span style={{ 
-                  fontFamily: 'var(--font-heading)',
-                  fontSize: '0.65rem', 
-                  fontWeight: 700, 
-                  color: 'var(--color-primary)', 
-                  letterSpacing: '1px',
-                  lineHeight: 1,
-                  marginTop: '1px'
-                }}>
-                  INNOVATIONS
-                </span>
-              </div>
+              </Link>
             </div>
             <p style={{ color: 'var(--color-text-muted-light)', fontSize: '0.95rem', marginBottom: '1.25rem' }}>
               {siteConfig.companySlogan}

@@ -1,9 +1,9 @@
 export const siteConfig = {
   companyName: "Hitec Innovations",
   companySlogan: "Smart Technology • Security • Automation",
-  logo: "https://i.ibb.co/Jjy6ZSvg/image.png",
+  logo: "/images/logo-cropped.png",
   heroes: {
-    about: "/images/hero-about.jpg",
+    about: "/images/logo-raw.png",
     cctv: "/images/hero-cctv.jpg",
     gate: "/images/hero-gate.jpg",
     tracking: "/images/hero-tracking.jpg",

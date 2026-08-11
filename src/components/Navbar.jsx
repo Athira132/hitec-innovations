@@ -123,46 +123,32 @@ export default function Navbar() {
         
         /* Responsive logo size variables */
         :root {
-          --logo-size: 52px;
+          --logo-height: 38px;
+          --logo-width: 112px;
         }
         @media (min-width: 768px) {
           :root {
-            --logo-size: 64px;
+            --logo-height: 48px;
+            --logo-width: 142px;
           }
         }
       `}</style>
 
       <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container nav-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          {/* Circular Logo Only Container */}
+          {/* Rectangular Logo Only (No circle!) */}
           <NavLink to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-            <div 
+            <img 
+              src={siteConfig.logo} 
+              alt="Hitec Innovations" 
               style={{
-                width: 'var(--logo-size, 52px)',
-                height: 'var(--logo-size, 52px)',
-                borderRadius: '50%',
-                overflow: 'hidden',
-                backgroundColor: '#ffffff',
-                border: '2.5px solid var(--color-primary)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                boxShadow: 'var(--shadow-sm)',
+                height: 'var(--logo-height, 38px)',
+                width: 'var(--logo-width, 112px)',
+                objectFit: 'contain',
+                display: 'block',
                 transition: 'var(--transition-fast)'
-              }}
-            >
-              <img 
-                src={siteConfig.logo} 
-                alt="Hitec Innovations Brand Logo" 
-                style={{
-                  width: '90%',
-                  height: '90%',
-                  objectFit: 'contain',
-                  borderRadius: '50%'
-                }} 
-              />
-            </div>
+              }} 
+            />
           </NavLink>
 
           {/* Desktop Navigation */}
