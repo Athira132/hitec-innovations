@@ -57,6 +57,32 @@ export default function Home() {
           max-height: 85%;
           object-fit: contain;
         }
+        
+        /* Stats Row - single row on desktop, 2x2 on mobile */
+        .stats-row {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2.5rem 1.5rem;
+        }
+        @media (min-width: 992px) {
+          .stats-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            gap: 1rem;
+          }
+        }
+        .stats-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          flex: 1 1 0px;
+          min-width: 0;
+        }
+      
       `}</style>
       
       {/* ---------------- SECTION 1: HERO BANNER (UNCHANGED) ---------------- */}
@@ -205,12 +231,12 @@ export default function Home() {
       {/* ---------------- SECTION 3: STATISTICS STRIP ---------------- */}
       <section style={{ backgroundColor: 'var(--color-light-bg)', padding: '3.5rem 0', borderTop: '1px solid var(--color-light-border)', borderBottom: '1px solid var(--color-light-border)' }}>
         <div className="container">
-          <div className="grid-4" style={{ textAlign: 'center' }}>
+          <div className="stats-row">
             {stats.map((stat, idx) => {
               const IconComponent = iconMap[stat.icon] || Award;
               return (
-                <div key={idx} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <div style={{ color: 'var(--color-primary)', marginBottom: '0.75rem' }}>
+                <div key={idx} className="stats-item">
+                  <div style={{ color: 'var(--color-primary)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <IconComponent size={32} />
                   </div>
                   <span style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--color-dark)', lineHeight: 1.1 }}>
@@ -369,33 +395,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------------- SECTION 8: PROJECTS PREVIEW ---------------- */}
-      <section className="section-padding">
-        <div className="container">
-          <SectionHeader 
-            label="Case Studies"
-            title="Featured Projects Preview"
-            subtitle="Browse through our select installations across CCTV, automated gates, and GPS fleet tracking."
-          />
-          <div className="grid-3" style={{ gap: '2rem' }}>
-            {projects.slice(0, 3).map((project) => (
-              <ProjectCard 
-                key={project.id}
-                id={project.id}
-                title={project.title}
-                category={project.category}
-                shortDesc={project.shortDesc}
-                image={project.image}
-              />
-            ))}
-          </div>
-          <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
-            <Link to="/projects" className="btn btn-secondary">
-              View Complete Projects Gallery
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* ---------------- SECTION 9: BOTTOM CTA BANNER ---------------- */}
       <section className="bg-dark-section section-padding" style={{ position: 'relative', overflow: 'hidden' }}>

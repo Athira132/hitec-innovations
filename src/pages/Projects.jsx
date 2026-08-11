@@ -104,30 +104,24 @@ export default function Projects() {
                     {project.longDesc}
                   </p>
 
-                  {/* Metadata Specs strip */}
-                  <div 
+                  {/* Inquiry button */}
+                  <Link 
+                    to="/contact" 
+                    className="btn btn-secondary" 
                     style={{ 
                       marginTop: 'auto', 
-                      paddingTop: '1.25rem', 
-                      borderTop: '1px solid var(--color-light-border)',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '0.75rem'
+                      padding: '0.6rem 1.25rem', 
+                      fontSize: '0.85rem', 
+                      width: '100%', 
+                      textAlign: 'center', 
+                      display: 'inline-flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      gap: '0.5rem' 
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', color: 'var(--color-text-muted-dark)' }}>
-                      <User size={14} style={{ color: 'var(--color-primary)' }} />
-                      <span><strong>Client:</strong> {project.client}</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', color: 'var(--color-text-muted-dark)' }}>
-                      <Calendar size={14} style={{ color: 'var(--color-primary)' }} />
-                      <span><strong>Year:</strong> {project.year}</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'start', gap: '0.5rem', fontSize: '0.8rem', color: 'var(--color-text-muted-dark)' }}>
-                      <Cpu size={14} style={{ color: 'var(--color-primary)', marginTop: '2px', flexShrink: 0 }} />
-                      <span><strong>Stack:</strong> {project.techStack}</span>
-                    </div>
-                  </div>
+                    Inquire About Setup <ArrowRight size={14} />
+                  </Link>
                 </div>
               </div>
             ))}

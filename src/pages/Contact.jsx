@@ -187,35 +187,71 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* WhatsApp Quick CTA */}
-                <div style={{ marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid var(--color-light-border)' }}>
-                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.75rem' }}>Need immediate assistance?</h4>
-                  <a 
-                    href={contact.whatsappLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn-primary"
-                    style={{ backgroundColor: 'hsl(142, 70%, 45%)', borderColor: 'hsl(142, 70%, 45%)' }}
-                  >
-                    <MessageSquare size={18} /> Chat on WhatsApp ({contact.whatsapp})
-                  </a>
+                {/* WhatsApp Quick CTA & Digital Visiting Card */}
+                <div style={{ marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid var(--color-light-border)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                  <div>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.5rem' }}>Need immediate assistance?</h4>
+                    <a 
+                      href={contact.whatsappLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="btn btn-primary"
+                      style={{ width: '100%', backgroundColor: 'hsl(142, 70%, 45%)', borderColor: 'hsl(142, 70%, 45%)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+                    >
+                      <MessageSquare size={18} /> Chat on WhatsApp ({contact.whatsapp})
+                    </a>
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.5rem' }}>Digital Visiting Card</h4>
+                    <a 
+                      href="https://ibb.co/chCfqs6V" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="btn btn-secondary"
+                      style={{ width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+                    >
+                      View Digital Visiting Card &rarr;
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              {/* Google Maps Visual Placeholder */}
+              {/* Find Us Section with Google Map */}
               <div 
-                className="img-placeholder" 
+                className="premium-card" 
                 style={{ 
-                  minHeight: '280px', 
-                  boxShadow: 'var(--shadow-sm)',
-                  backgroundColor: 'var(--color-light-surface)',
-                  color: 'var(--color-text-dark)',
-                  border: '1px solid var(--color-light-border)'
+                  marginTop: '2rem',
+                  padding: '2.5rem', 
+                  backgroundColor: 'var(--color-light-bg)' 
                 }}
               >
-                <Map size={36} style={{ color: 'var(--color-primary)', marginBottom: '0.5rem', opacity: 0.8 }} />
-                <span className="placeholder-title" style={{ color: 'var(--color-dark)', fontSize: '0.9rem' }}>[Google Maps Embed Container - Thrissur]</span>
-                <span className="placeholder-size" style={{ color: 'var(--color-text-muted-dark)' }}>Mission Quarters, Thrissur – 680 001</span>
+                <h3 className="card-title" style={{ fontSize: '1.4rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Map size={22} style={{ color: 'var(--color-primary)' }} /> Find Us
+                </h3>
+                <div 
+                  className="img-placeholder" 
+                  style={{ 
+                    minHeight: '200px', 
+                    boxShadow: 'var(--shadow-sm)',
+                    backgroundColor: 'var(--color-light-surface)',
+                    color: 'var(--color-text-dark)',
+                    border: '1px solid var(--color-light-border)',
+                    marginBottom: '1.5rem'
+                  }}
+                >
+                  <Map size={36} style={{ color: 'var(--color-primary)', marginBottom: '0.5rem', opacity: 0.8 }} />
+                  <span className="placeholder-title" style={{ color: 'var(--color-dark)', fontSize: '0.95rem', fontWeight: 700 }}>Mission Quarters, Thrissur</span>
+                  <span className="placeholder-size" style={{ color: 'var(--color-text-muted-dark)', fontSize: '0.85rem' }}>Near St. Joseph Convent Boarding</span>
+                </div>
+                <a 
+                  href="https://maps.google.com/?q=35/41/92,+Ground+Floor,+Near+St.+Joseph+Convent+Boarding,+Mission+Quarters,+Thrissur+-+680001" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-primary"
+                  style={{ width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+                >
+                  View Location on Google Maps &rarr;
+                </a>
               </div>
             </div>
 

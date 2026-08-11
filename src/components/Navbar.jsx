@@ -120,62 +120,48 @@ export default function Navbar() {
           display: block;
           padding: 0.35rem 0;
         }
-        .mobile-dropdown-link.active {
-          color: var(--color-primary);
+        
+        /* Responsive logo size variables */
+        :root {
+          --logo-size: 52px;
+        }
+        @media (min-width: 768px) {
+          :root {
+            --logo-size: 64px;
+          }
         }
       `}</style>
 
       <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container nav-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          {/* Circular Logo & Name Container */}
-          <NavLink to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
-            <div style={{
-              width: '46px',
-              height: '46px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              backgroundColor: '#ffffff',
-              border: '2px solid var(--color-primary)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0,
-              boxShadow: 'var(--shadow-sm)'
-            }}>
+          {/* Circular Logo Only Container */}
+          <NavLink to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <div 
+              style={{
+                width: 'var(--logo-size, 52px)',
+                height: 'var(--logo-size, 52px)',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                backgroundColor: '#ffffff',
+                border: '2.5px solid var(--color-primary)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+                boxShadow: 'var(--shadow-sm)',
+                transition: 'var(--transition-fast)'
+              }}
+            >
               <img 
                 src={siteConfig.logo} 
-                alt="Hitec Innovations" 
+                alt="Hitec Innovations Brand Logo" 
                 style={{
-                  width: '88%',
-                  height: '88%',
+                  width: '90%',
+                  height: '90%',
                   objectFit: 'contain',
                   borderRadius: '50%'
                 }} 
               />
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ 
-                fontFamily: 'var(--font-heading)',
-                fontWeight: 800, 
-                fontSize: '1.15rem', 
-                lineHeight: 1, 
-                color: isScrolled || isOpen ? 'var(--color-dark)' : 'var(--color-text-light)',
-                transition: 'color var(--transition-fast)',
-                letterSpacing: '-0.5px'
-              }}>
-                HITEC
-              </span>
-              <span style={{ 
-                fontFamily: 'var(--font-heading)',
-                fontSize: '0.7rem', 
-                fontWeight: 700, 
-                color: 'var(--color-primary)', 
-                letterSpacing: '1px',
-                lineHeight: 1,
-                marginTop: '2px'
-              }}>
-                INNOVATIONS
-              </span>
             </div>
           </NavLink>
 

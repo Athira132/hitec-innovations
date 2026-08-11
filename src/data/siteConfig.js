@@ -27,9 +27,7 @@ export const siteConfig = {
     whatsappLink: "https://wa.me/918281194990?text=Hello%20Hitec%20Innovations,%20I%20would%20like%20to%20inquire%20about%20your%20services.",
     socials: {
       facebook: "https://facebook.com",
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-      instagram: "https://instagram.com"
+      youtube: "https://youtube.com"
     }
   },
   homeHero: {
@@ -48,22 +46,22 @@ export const siteConfig = {
   },
   stats: [
     {
-      value: "XX+",
+      value: "8+",
       label: "Years of Experience",
       icon: "Award"
     },
     {
-      value: "XX+",
+      value: "150+",
       label: "Projects Completed",
       icon: "CheckCircle"
     },
     {
-      value: "XX+",
+      value: "500+",
       label: "Happy Clients",
       icon: "Users"
     },
     {
-      value: "XX+",
+      value: "4+",
       label: "System Brands",
       icon: "ShieldAlert"
     }
