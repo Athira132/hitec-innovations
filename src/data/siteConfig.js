@@ -3,7 +3,7 @@ export const siteConfig = {
   companySlogan: "Smart Technology • Security • Automation",
   logo: "/images/logo-cropped.png",
   heroes: {
-    about: "/images/logo-raw.png",
+    about: "/images/hero-about.jpg",
     cctv: "/images/hero-cctv.jpg",
     gate: "/images/hero-gate.jpg",
     tracking: "/images/hero-tracking.jpg",
