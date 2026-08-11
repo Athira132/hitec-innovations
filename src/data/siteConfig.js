@@ -27,7 +27,7 @@ export const siteConfig = {
     whatsappLink: "https://wa.me/918281194990?text=Hello%20Hitec%20Innovations,%20I%20would%20like%20to%20inquire%20about%20your%20services.",
     socials: {
       facebook: "https://www.facebook.com/hitec.innovations",
-      youtube: "https://www.youtube.com/channel/UC_JZIRee_6iJRSRosFs3j-w"
+      youtube: "https://www.youtube.com/@hitecinnovations"
     }
   },
   homeHero: {
