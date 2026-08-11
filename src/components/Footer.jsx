@@ -28,16 +28,28 @@ export default function Footer() {
           <div>
             <div style={{ marginBottom: '1.25rem' }}>
               <Link to="/" style={{ display: 'inline-block', textDecoration: 'none' }}>
-                <img 
-                  src={siteConfig.logo} 
-                  alt="Hitec Innovations" 
-                  style={{
-                    height: '38px',
-                    width: 'auto',
-                    objectFit: 'contain',
-                    display: 'block'
-                  }} 
-                />
+                <div style={{
+                  width: '58px',
+                  height: '58px',
+                  borderRadius: '50%',
+                  backgroundColor: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 3px 8px rgba(0, 0, 0, 0.35)',
+                  flexShrink: 0
+                }}>
+                  <img 
+                    src={siteConfig.logo} 
+                    alt="Hitec Innovations" 
+                    style={{
+                      width: '82%',
+                      height: 'auto',
+                      objectFit: 'contain',
+                      display: 'block'
+                    }} 
+                  />
+                </div>
               </Link>
             </div>
             <p style={{ color: 'var(--color-text-muted-light)', fontSize: '0.95rem', marginBottom: '1.25rem' }}>
