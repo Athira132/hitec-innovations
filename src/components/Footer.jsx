@@ -41,8 +41,53 @@ export default function Footer() {
         <div className="grid-4 footer-top">
           {/* Brand Col */}
           <div>
-            <div className="footer-logo">
-              {siteConfig.companyName.split(' ')[0]} <span>{siteConfig.companyName.split(' ')[1] || 'Innovations'}</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+              <div style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                backgroundColor: '#ffffff',
+                border: '2px solid var(--color-primary)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}>
+                <img 
+                  src={siteConfig.logo} 
+                  alt="Hitec Innovations Logo" 
+                  style={{
+                    width: '88%',
+                    height: '88%',
+                    objectFit: 'contain',
+                    borderRadius: '50%'
+                  }} 
+                />
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{ 
+                  fontFamily: 'var(--font-heading)',
+                  fontWeight: 800, 
+                  fontSize: '1.1rem', 
+                  lineHeight: 1, 
+                  color: 'var(--color-text-light)',
+                  letterSpacing: '-0.5px'
+                }}>
+                  HITEC
+                </span>
+                <span style={{ 
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '0.65rem', 
+                  fontWeight: 700, 
+                  color: 'var(--color-primary)', 
+                  letterSpacing: '1px',
+                  lineHeight: 1,
+                  marginTop: '1px'
+                }}>
+                  INNOVATIONS
+                </span>
+              </div>
             </div>
             <p style={{ color: 'var(--color-text-muted-light)', fontSize: '0.95rem', marginBottom: '1.25rem' }}>
               {siteConfig.companySlogan}
@@ -74,7 +119,6 @@ export default function Footer() {
               <li className="footer-link-item"><Link to="/">Home</Link></li>
               <li className="footer-link-item"><Link to="/about">About Us</Link></li>
               <li className="footer-link-item"><Link to="/services">Services Overview</Link></li>
-              <li className="footer-link-item"><Link to="/brands">CCTV Brands</Link></li>
               <li className="footer-link-item"><Link to="/projects">Projects</Link></li>
               <li className="footer-link-item"><Link to="/contact">Contact Us</Link></li>
             </ul>

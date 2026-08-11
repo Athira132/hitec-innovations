@@ -9,7 +9,6 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
-import Brands from './pages/Brands';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 
@@ -39,7 +38,6 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/:serviceId" element={<ServiceDetail />} />
-            <Route path="/brands" element={<Brands />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

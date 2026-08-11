@@ -126,15 +126,57 @@ export default function Navbar() {
       `}</style>
 
       <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="container nav-container">
-          {/* Logo */}
-          <NavLink to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
-            <div className="navbar-logo-circle">
-              <img src={siteConfig.logoUrl} alt="Hitec Innovations Logo" />
+        <div className="container nav-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          {/* Circular Logo & Name Container */}
+          <NavLink to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
+            <div style={{
+              width: '46px',
+              height: '46px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              backgroundColor: '#ffffff',
+              border: '2px solid var(--color-primary)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+              boxShadow: 'var(--shadow-sm)'
+            }}>
+              <img 
+                src={siteConfig.logo} 
+                alt="Hitec Innovations" 
+                style={{
+                  width: '88%',
+                  height: '88%',
+                  objectFit: 'contain',
+                  borderRadius: '50%'
+                }} 
+              />
             </div>
-            <span style={{ fontSize: '1.2rem', fontWeight: 800, fontFamily: 'var(--font-heading)', color: 'var(--color-text-light)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
-              Hitec <span style={{ color: 'var(--color-primary)' }}>Innovations</span>
-            </span>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <span style={{ 
+                fontFamily: 'var(--font-heading)',
+                fontWeight: 800, 
+                fontSize: '1.15rem', 
+                lineHeight: 1, 
+                color: isScrolled || isOpen ? 'var(--color-dark)' : 'var(--color-text-light)',
+                transition: 'color var(--transition-fast)',
+                letterSpacing: '-0.5px'
+              }}>
+                HITEC
+              </span>
+              <span style={{ 
+                fontFamily: 'var(--font-heading)',
+                fontSize: '0.7rem', 
+                fontWeight: 700, 
+                color: 'var(--color-primary)', 
+                letterSpacing: '1px',
+                lineHeight: 1,
+                marginTop: '2px'
+              }}>
+                INNOVATIONS
+              </span>
+            </div>
           </NavLink>
 
           {/* Desktop Navigation */}
@@ -169,7 +211,6 @@ export default function Navbar() {
               </ul>
             </div>
 
-            <NavLink to="/brands" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>CCTV Brands</NavLink>
             <NavLink to="/projects" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Projects</NavLink>
             <NavLink to="/contact" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Contact Us</NavLink>
           </nav>
@@ -181,9 +222,9 @@ export default function Navbar() {
             aria-label="Toggle Navigation Menu"
             aria-expanded={isOpen}
           >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
+            <span className="hamburger-line" style={{ backgroundColor: isScrolled || isOpen ? 'var(--color-dark)' : 'var(--color-light)' }}></span>
+            <span className="hamburger-line" style={{ backgroundColor: isScrolled || isOpen ? 'var(--color-dark)' : 'var(--color-light)' }}></span>
+            <span className="hamburger-line" style={{ backgroundColor: isScrolled || isOpen ? 'var(--color-dark)' : 'var(--color-light)' }}></span>
           </button>
         </div>
       </header>
@@ -233,9 +274,6 @@ export default function Navbar() {
               </ul>
             </li>
 
-            <li>
-              <NavLink to="/brands" className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>CCTV Brands</NavLink>
-            </li>
             <li>
               <NavLink to="/projects" className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>Projects</NavLink>
             </li>

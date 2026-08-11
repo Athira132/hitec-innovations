@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { siteConfig } from '../data/siteConfig';
 import SectionHeader from '../components/SectionHeader';
-import { ArrowLeft, Check, ShieldCheck, Cpu, Settings, Activity, ArrowRight, Video, Lock, Radio } from 'lucide-react';
+import { ArrowLeft, Check, ArrowRight, ShieldCheck, Settings, Eye, Zap } from 'lucide-react';
 
 export default function ServiceDetail() {
   const { serviceId } = useParams();
-
+  
   // Find specific service details
   const service = siteConfig.services.find(s => s.id === serviceId);
 
@@ -29,227 +29,387 @@ export default function ServiceDetail() {
     );
   }
 
-  // Get route-specific hero background image
-  let heroBg = "";
-  if (serviceId === "cctv-installation") heroBg = siteConfig.heroes.cctv;
-  else if (serviceId === "gate-automation") heroBg = siteConfig.heroes.gate;
-  else if (serviceId === "vehicle-tracking") heroBg = siteConfig.heroes.tracking;
-  else if (serviceId === "home-automation") heroBg = siteConfig.heroes.automation;
-  else heroBg = siteConfig.heroes.home;
+  // Get service specific hero image
+  let heroBg = '';
+  if (service.id === 'cctv-installation') heroBg = siteConfig.heroes.cctv;
+  else if (service.id === 'gate-automation') heroBg = siteConfig.heroes.gate;
+  else if (service.id === 'vehicle-tracking') heroBg = siteConfig.heroes.tracking;
+  else if (service.id === 'home-automation') heroBg = siteConfig.heroes.homeAuto;
 
   return (
     <div className="page-top-spacer">
       
-      {/* ---------------- SECTION 1: HERO BANNER (Cinematic + left-gradient) ---------------- */}
-      <section className="custom-hero-banner" style={{ backgroundImage: `url(${heroBg})` }}>
-        <div className="container">
-          <div style={{ maxWidth: '650px' }}>
-            <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-primary)', fontWeight: 600, marginBottom: '1.5rem', fontSize: '0.9rem', textDecoration: 'none' }}>
-              <ArrowLeft size={14} /> Back to All Services
-            </Link>
-            <h1 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.1, color: 'var(--color-text-light)' }}>
-              {service.title}
-            </h1>
-            <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', lineHeight: '1.6' }}>
-              {service.shortDesc}
-            </p>
-          </div>
+      {/* ---------------- SECTION 1: UNIQUE HERO BACKGROUND ---------------- */}
+      <section 
+        className="bg-dark-section section-padding hero-background-overlay" 
+        style={{ 
+          position: 'relative', 
+          overflow: 'hidden', 
+          textAlign: 'left',
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          minHeight: '340px',
+          display: 'flex',
+          alignItems: 'center'
+        }}
+      >
+        {/* Subtle dark overlay for text legibility */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'linear-gradient(to right, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.4) 100%)',
+          zIndex: 1
+        }}></div>
+
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-primary)', fontWeight: 600, marginBottom: '1.5rem', fontSize: '0.9rem', textDecoration: 'none' }}>
+            <ArrowLeft size={14} /> Back to All Services
+          </Link>
+          <h1 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.1, color: 'var(--color-text-light)' }}>
+            {service.title}
+          </h1>
+          <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.15rem', maxWidth: '700px', margin: 0 }}>
+            {service.shortDesc}
+          </p>
         </div>
       </section>
 
       {/* ---------------- SECTION 2: INTRODUCTION ---------------- */}
-      <section className="section-padding">
+      <section className="section-padding" style={{ paddingBottom: '3rem' }}>
         <div className="container">
           <div className="grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
             <div>
-              <span className="section-label">Overview</span>
-              <h2 className="section-title" style={{ marginBottom: '1.5rem', fontSize: '2rem' }}>
-                Professional Systems Engineering
-              </h2>
-              <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '1.05rem', marginBottom: '1.5rem', lineHeight: '1.7' }}>
+              <span className="section-label">Professional Engineering</span>
+              <h2 className="section-title" style={{ marginBottom: '1.5rem', fontSize: '2rem' }}>Introduction</h2>
+              <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '1.05rem', marginBottom: '1.5rem', lineHeight: '1.6' }}>
                 {service.longDesc}
               </p>
-              <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '0.95rem', lineHeight: '1.7' }}>
-                [Hitec Innovations provides tailored, professional installations in Thrissur and across Kerala. All hardware integrations are customized to protect property security, vehicle status telemetry, and smart controllers securely.]
+              <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                Hitec Innovations configures and deploys security cameras, gate automation modules, GPS trackers, and smart hubs to guarantee premium operation. Our certified technician team carries out physical mounts, torque limits calibration, telemetry signals, and network backups in Thrissur and across Kerala.
               </p>
             </div>
             <div>
               <div 
-                className="img-placeholder tall" 
                 style={{ 
-                  minHeight: '320px', 
-                  backgroundImage: `url(${heroBg})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  borderRadius: 'var(--border-radius-md)',
-                  position: 'relative'
+                  borderRadius: 'var(--border-radius-md)', 
+                  overflow: 'hidden', 
+                  boxShadow: 'var(--shadow-md)',
+                  width: '100%',
+                  aspectRatio: '4/3',
+                  border: '1px solid var(--color-light-border)'
                 }}
               >
-                <div style={{
-                  position: 'absolute',
-                  top: 0, left: 0, width: '100%', height: '100%',
-                  backgroundColor: 'rgba(0,0,0,0.4)',
-                  borderRadius: 'var(--border-radius-md)'
-                }}></div>
+                <img 
+                  src={service.image} 
+                  alt={service.title} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ---------------- SECTION 3: SOLUTIONS ---------------- */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-light-bg)', borderTop: '1px solid var(--color-light-border)', borderBottom: '1px solid var(--color-light-border)' }}>
-        <div className="container">
-          <SectionHeader 
-            label="Integrations"
-            title={`${service.title} Solutions`}
-            subtitle="We engineer specialized configurations designed for residential comfort and commercial security standards."
-          />
+      {/* ---------------- CONDITIONAL TEMPLATES ACCORDING TO SERVICE ID ---------------- */}
 
-          <div className="grid-3" style={{ gap: '2rem' }}>
-            {service.sections.slice(0, 3).map((item, idx) => (
-              <div key={idx} className="premium-card" style={{ padding: '2rem' }}>
-                <div style={{ color: 'var(--color-primary)', marginBottom: '1rem' }}>
-                  {idx === 0 ? <Video size={32} /> : idx === 1 ? <Settings size={32} /> : <Lock size={32} />}
-                </div>
-                <h3 className="card-title" style={{ fontSize: '1.2rem', marginBottom: '0.75rem' }}>{item.name}</h3>
-                <p className="card-desc" style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', lineHeight: '1.6' }}>{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------- SECTION 4: FEATURES ---------------- */}
-      <section className="section-padding">
-        <div className="container">
-          <div className="grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
-            <div>
-              <span className="section-label">Specifications</span>
-              <h2 className="section-title">Key Capabilities & Features</h2>
-              <p style={{ color: 'var(--color-text-muted-dark)', marginBottom: '2rem', fontSize: '1rem' }}>
-                Explore the hardware functionalities and smart triggers we build directly into our systems:
-              </p>
+      {/* A. CCTV INSTALLATION DETAIL */}
+      {service.id === 'cctv-installation' && (
+        <>
+          {/* Solutions & Residential/Commercial CCTV */}
+          <section className="section-padding" style={{ backgroundColor: 'var(--color-light-bg)', borderTop: '1px solid var(--color-light-border)', borderBottom: '1px solid var(--color-light-border)' }}>
+            <div className="container">
+              <SectionHeader 
+                label="Security Solutions"
+                title="CCTV Solutions & Applications"
+                subtitle="We inspect your premises and engineer tailored surveillance loops for homes and offices."
+              />
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                {service.sections.slice(2).map((item, idx) => (
-                  <div key={idx} style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
-                    <div style={{ color: 'var(--color-primary)', marginTop: '3px' }}><ShieldCheck size={20} /></div>
-                    <div>
-                      <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--color-dark)', marginBottom: '0.25rem' }}>{item.name}</h4>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted-dark)' }}>{item.desc}</p>
+              <div className="grid-2" style={{ gap: '3rem', marginBottom: '4rem' }}>
+                <div className="premium-card" style={{ padding: '2.5rem' }}>
+                  <div style={{ color: 'var(--color-primary)', marginBottom: '1rem' }}><ShieldCheck size={28} /></div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>Residential CCTV</h3>
+                  <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', lineHeight: '1.5' }}>
+                    Protect your villa, backyard, and entrances. We install smart high-definition cameras with continuous recording and link them to your phone for remote feeds and movement push-alerts.
+                  </p>
+                </div>
+                <div className="premium-card" style={{ padding: '2.5rem' }}>
+                  <div style={{ color: 'var(--color-primary)', marginBottom: '1rem' }}><Settings size={28} /></div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>Commercial CCTV</h3>
+                  <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', lineHeight: '1.5' }}>
+                    Maintain full operation visibility at warehouses, retail showrooms, and office blocks. We deploy dome/bullet cameras, configure multi-terabyte NVR storage blocks, and set up network matrices.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Installation, Config & Maintenance */}
+          <section className="section-padding">
+            <div className="container">
+              <SectionHeader 
+                label="Methodology"
+                title="Installation, Configuration & Support"
+                subtitle="Our engineers follow standard checklist guides to guarantee hardware stability and signal quality."
+              />
+              <div className="grid-3" style={{ gap: '2rem' }}>
+                {service.sections.slice(3, 5).map((sec, idx) => (
+                  <div key={idx} className="premium-card" style={{ padding: '2rem' }}>
+                    <h3 className="card-title" style={{ fontSize: '1.15rem', marginBottom: '0.75rem' }}>{sec.name}</h3>
+                    <p className="card-desc" style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', lineHeight: '1.5' }}>{sec.desc}</p>
+                  </div>
+                ))}
+                <div className="premium-card" style={{ padding: '2rem' }}>
+                  <h3 className="card-title" style={{ fontSize: '1.15rem', marginBottom: '0.75rem' }}>Why Choose Hitec Innovations</h3>
+                  <p className="card-desc" style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', lineHeight: '1.5' }}>
+                    We provide authorized hardware warranties, tidy rack cabling, local support in Thrissur, and prompt responses to service tickets.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* CCTV BRANDS - STRICTLY INSIDE CCTV INSTALLATION */}
+          <section className="section-padding" style={{ backgroundColor: 'var(--color-light-bg)', borderTop: '1px solid var(--color-light-border)', borderBottom: '1px solid var(--color-light-border)' }}>
+            <div className="container">
+              <SectionHeader 
+                label="Authorized Hardware Integration"
+                title="Brands We Work With"
+                subtitle="We integrate products only from trusted global security surveillance brands, guaranteeing hardware warranties."
+              />
+              <div className="grid-4" style={{ gap: '2rem' }}>
+                {siteConfig.brands.map((brand) => (
+                  <div 
+                    key={brand.name} 
+                    className="premium-card" 
+                    style={{ 
+                      textAlign: 'center', 
+                      padding: '2rem 1.5rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: 'var(--color-light)',
+                      border: '1px solid var(--color-light-border)'
+                    }}
+                  >
+                    <div style={{ width: '130px', height: '60px', marginBottom: '1rem', display: 'flex', alignItems: 'center', justifyPosition: 'center' }}>
+                      <img src={brand.image} alt={brand.name} style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }} />
                     </div>
+                    <h4 style={{ fontSize: '1rem', fontWeight: 800, margin: 0, color: 'var(--color-dark)' }}>{brand.name}</h4>
                   </div>
                 ))}
               </div>
             </div>
-            <div>
-              <div className="premium-card" style={{ padding: '2.5rem', backgroundColor: 'var(--color-dark)', color: 'var(--color-text-light)' }}>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '1.5rem', color: 'var(--color-text-light)' }}>
-                  Hardware Performance Standards
-                </h3>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <li style={{ display: 'flex', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--color-text-muted-light)' }}>
-                    <span style={{ color: 'var(--color-primary)' }}>&#10003;</span>
-                    Industrial weatherproofing rating on all outdoor cameras and controllers.
-                  </li>
-                  <li style={{ display: 'flex', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--color-text-muted-light)' }}>
-                    <span style={{ color: 'var(--color-primary)' }}>&#10003;</span>
-                    Reliable local storage and battery backups to withstand power fluctuations.
-                  </li>
-                  <li style={{ display: 'flex', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--color-text-muted-light)' }}>
-                    <span style={{ color: 'var(--color-primary)' }}>&#10003;</span>
-                    End-to-end encryption on smart hubs to prevent network breaches.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------- SECTION 5: CCTV BRANDS (ONLY under CCTV Installation) ---------------- */}
-      {serviceId === "cctv-installation" && (
-        <section className="section-padding" style={{ backgroundColor: 'var(--color-dark)', color: 'var(--color-text-light)', borderTop: '1px solid var(--color-dark-border)', borderBottom: '1px solid var(--color-dark-border)' }}>
-          <div className="container">
-            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <span className="section-label" style={{ color: 'var(--color-primary)' }}>Official Surviellance Gear</span>
-              <h2 style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--color-text-light)', marginTop: '0.5rem' }}>CCTV BRANDS</h2>
-              <p style={{ color: 'var(--color-text-muted-light)', maxWidth: '600px', margin: '0.5rem auto 0 auto' }}>
-                Hitec Innovations installs and configures high-grade security cameras and NVR recording decks from leading global manufacturers.
-              </p>
-            </div>
-
-            <div className="cctv-brands-grid">
-              {siteConfig.cctvBrands.map((brand) => (
-                <div key={brand.name} className="cctv-brand-card">
-                  <div className="cctv-brand-img-container">
-                    <img src={brand.imageUrl} alt={`${brand.name} official brand logo`} />
-                  </div>
-                  <h3 className="cctv-brand-name">{brand.name}</h3>
-                  <p className="cctv-brand-desc">{brand.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+          </section>
+        </>
       )}
 
-      {/* ---------------- SECTION 6: INSTALLATION / WORK PROCESS ---------------- */}
+      {/* B. GATE AUTOMATION DETAIL */}
+      {service.id === 'gate-automation' && (
+        <>
+          {/* Solutions & Applications (with Supplied Image 2) */}
+          <section className="section-padding" style={{ backgroundColor: 'var(--color-light-bg)', borderTop: '1px solid var(--color-light-border)', borderBottom: '1px solid var(--color-light-border)' }}>
+            <div className="container">
+              <div className="grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
+                <div>
+                  <div 
+                    style={{ 
+                      borderRadius: 'var(--border-radius-md)', 
+                      overflow: 'hidden', 
+                      boxShadow: 'var(--shadow-md)',
+                      width: '100%',
+                      aspectRatio: '4/3',
+                      border: '1px solid var(--color-light-border)'
+                    }}
+                  >
+                    <img 
+                      src={service.image2} 
+                      alt="Gate Motor Calibration" 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <span className="section-label">Perimeter Automation</span>
+                  <h2 className="section-title" style={{ marginBottom: '1.5rem', fontSize: '2rem' }}>Gate Automation Solutions</h2>
+                  <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '1rem', marginBottom: '1.5rem', lineHeight: '1.6' }}>
+                    Hitec Innovations deploys automatic sliding gates, heavy-duty swing motors, and parking barriers. We integrate RFID cards, remote keyfobs, passcode consoles, and photodiode loops to prevent gate doors from closing on active vehicles.
+                  </p>
+                  <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                    All motor gears are calibrated according to gate dimensions, total weights, and sliding cycle rates to prevent overheating and ensure silent operations.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Features, Applications, Installation, Support */}
+          <section className="section-padding">
+            <div className="container">
+              <SectionHeader 
+                label="Scope of Delivery"
+                title="Automatic Gate Systems & Processes"
+                subtitle="We oversee the mechanical integration and electrical configuration of smart motors."
+              />
+              <div className="grid-3" style={{ gap: '2rem' }}>
+                {service.sections.slice(1, 4).map((sec, idx) => (
+                  <div key={idx} className="premium-card" style={{ padding: '2rem' }}>
+                    <h3 className="card-title" style={{ fontSize: '1.15rem', marginBottom: '0.75rem' }}>{sec.name}</h3>
+                    <p className="card-desc" style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', lineHeight: '1.5' }}>{sec.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* C. VEHICLE TRACKING DETAIL */}
+      {service.id === 'vehicle-tracking' && (
+        <>
+          {/* Solutions & GPS Tracking (with Supplied Image 2) */}
+          <section className="section-padding" style={{ backgroundColor: 'var(--color-light-bg)', borderTop: '1px solid var(--color-light-border)', borderBottom: '1px solid var(--color-light-border)' }}>
+            <div className="container">
+              <div className="grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
+                <div>
+                  <span className="section-label">Fleet Telematics</span>
+                  <h2 className="section-title" style={{ marginBottom: '1.5rem', fontSize: '2rem' }}>Vehicle Tracking Solutions</h2>
+                  <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '1rem', marginBottom: '1.5rem', lineHeight: '1.6' }}>
+                    Secure your individual car or coordinate your commercial fleet vehicles. We install low-draw GPS tracking transceivers inside the dashboard, wire them securely into vehicle ignition channels, and configure cloud telemetry panels.
+                  </p>
+                  <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                    This allows fleet operators to log real-time locations, check speed violations, monitor idle durations, and trigger geofence alerts or remote engine immobilization.
+                  </p>
+                </div>
+                <div>
+                  <div 
+                    style={{ 
+                      borderRadius: 'var(--border-radius-md)', 
+                      overflow: 'hidden', 
+                      boxShadow: 'var(--shadow-md)',
+                      width: '100%',
+                      aspectRatio: '4/3',
+                      border: '1px solid var(--color-light-border)'
+                    }}
+                  >
+                    <img 
+                      src={service.image2} 
+                      alt="GPS Fleet Dashboard" 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* GPS Tracking, Real-time monitoring, Vehicle security, Fleet monitoring */}
+          <section className="section-padding">
+            <div className="container">
+              <SectionHeader 
+                label="Module Specs"
+                title="GPS Tracking & Fleet Monitoring"
+                subtitle="High-precision telemetry solutions that optimize logistical routes and secure vehicles."
+              />
+              <div className="grid-3" style={{ gap: '2rem' }}>
+                {service.sections.map((sec, idx) => (
+                  <div key={idx} className="premium-card" style={{ padding: '2rem' }}>
+                    <h3 className="card-title" style={{ fontSize: '1.15rem', marginBottom: '0.75rem' }}>{sec.name}</h3>
+                    <p className="card-desc" style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', lineHeight: '1.5' }}>{sec.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* D. HOME AUTOMATION DETAIL */}
+      {service.id === 'home-automation' && (
+        <>
+          {/* Smart Home solutions (with Supplied Image 2) */}
+          <section className="section-padding" style={{ backgroundColor: 'var(--color-light-bg)', borderTop: '1px solid var(--color-light-border)', borderBottom: '1px solid var(--color-light-border)' }}>
+            <div className="container">
+              <div className="grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
+                <div>
+                  <div 
+                    style={{ 
+                      borderRadius: 'var(--border-radius-md)', 
+                      overflow: 'hidden', 
+                      boxShadow: 'var(--shadow-md)',
+                      width: '100%',
+                      aspectRatio: '4/3',
+                      border: '1px solid var(--color-light-border)'
+                    }}
+                  >
+                    <img 
+                      src={service.image2} 
+                      alt="Smart Switch Installation" 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <span className="section-label">Smart Living Spaces</span>
+                  <h2 className="section-title" style={{ marginBottom: '1.5rem', fontSize: '2rem' }}>Smart Home Solutions</h2>
+                  <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '1rem', marginBottom: '1.5rem', lineHeight: '1.6' }}>
+                    Hitec Innovations integrates lighting controls, smart locks, video door intercom systems, and appliances into a single connected dashboard. We place wireless switch inserts behind standard physical boards, making them smart without altering your home aesthetics.
+                  </p>
+                  <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                    This allows you to control lights, adjust schedules, lower energy consumption, and arm security sensors remotely via mobile apps or voice assistants.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Smart Security, Smart control, Convenience, Energy-related features */}
+          <section className="section-padding">
+            <div className="container">
+              <SectionHeader 
+                label="Connected Assets"
+                title="Smart Controls & Convenience"
+                subtitle="We design intelligent living scenes customized to your comfort and energy plans."
+              />
+              <div className="grid-4" style={{ gap: '2rem' }}>
+                {service.sections.map((sec, idx) => (
+                  <div key={idx} className="premium-card" style={{ padding: '1.5rem' }}>
+                    <h3 className="card-title" style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>{sec.name}</h3>
+                    <p className="card-desc" style={{ fontSize: '0.85rem', color: 'var(--color-text-muted-dark)', lineHeight: '1.5' }}>{sec.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* ---------------- SECTION 3: COMMON BENEFITS STRIP ---------------- */}
       <section className="section-padding" style={{ backgroundColor: 'var(--color-light-bg)', borderTop: '1px solid var(--color-light-border)', borderBottom: '1px solid var(--color-light-border)' }}>
         <div className="container">
           <SectionHeader 
-            label="Timeline"
-            title="Our Process Roadmap"
-            subtitle="How Hitec Innovations approaches systems audits, wiring routing, hardware setup, and delivery."
+            label="Service Value"
+            title="Key Benefits"
+            subtitle={`Why Hitec Innovations' ${service.title} integration stands out.`}
           />
-          
-          <div className="grid-3" style={{ gap: '3rem' }}>
-            {siteConfig.processes.map((step) => (
-              <div key={step.number} style={{ textAlign: 'center', position: 'relative' }}>
-                <div style={{ fontFamily: 'var(--font-heading)', fontSize: '4rem', fontWeight: 800, color: 'var(--color-light-surface)', lineHeight: 1, marginBottom: '0.75rem' }}>
-                  {step.number}
+          <div className="grid-2" style={{ gap: '2rem' }}>
+            {service.benefits.map((benefit, idx) => (
+              <div key={idx} className="premium-card" style={{ display: 'flex', gap: '1rem', alignItems: 'start', padding: '2rem' }}>
+                <div style={{ color: 'var(--color-primary)', display: 'flex', marginTop: '3px' }}><ShieldCheck size={24} /></div>
+                <div style={{ fontSize: '0.95rem', color: 'var(--color-text-dark)', lineHeight: '1.6' }}>
+                  {benefit}
                 </div>
-                <h4 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--color-dark)', marginBottom: '0.5rem' }}>{step.title}</h4>
-                <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', maxWidth: '280px', margin: '0 auto', lineHeight: '1.5' }}>{step.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ---------------- SECTION 7: BENEFITS ---------------- */}
-      <section className="section-padding">
-        <div className="container">
-          <div className="grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
-            <div>
-              <div className="img-placeholder tall" style={{ minHeight: '320px', backgroundColor: 'var(--color-light-surface)', border: '1px solid var(--color-light-border)' }}>
-                <ShieldCheck size={48} style={{ color: 'var(--color-primary)', opacity: 0.8, marginBottom: '1rem' }} />
-                <span className="placeholder-title" style={{ color: 'var(--color-dark)' }}>Verified Quality Standards</span>
-                <span className="placeholder-size" style={{ color: 'var(--color-text-muted-dark)' }}>Hitec Innovations - Thrissur</span>
-              </div>
-            </div>
-            <div>
-              <span className="section-label">Advantages</span>
-              <h2 className="section-title">Value & Long-term Benefits</h2>
-              <p style={{ color: 'var(--color-text-muted-dark)', marginBottom: '2rem', lineHeight: '1.6' }}>
-                Integrating these professional smart systems into your building or logistic routes offers immediate and long-term security gains:
-              </p>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                {service.benefits.map((benefit, idx) => (
-                  <div key={idx} style={{ display: 'flex', gap: '0.75rem', alignItems: 'start' }}>
-                    <div style={{ color: 'var(--color-primary)', marginTop: '2px' }}><Check size={18} /></div>
-                    <span style={{ fontSize: '0.95rem', color: 'var(--color-text-dark)', lineHeight: '1.5' }}>{benefit}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------- SECTION 8: BOTTOM CTA BANNER ---------------- */}
+      {/* ---------------- SECTION 4: BOTTOM CTA BANNER ---------------- */}
       <section className="bg-dark-section section-padding" style={{ position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
         <div style={{
           position: 'absolute',
@@ -262,19 +422,18 @@ export default function ServiceDetail() {
         }}></div>
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ maxWidth: '650px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '1.25rem' }}>
-              Interested in a custom {service.title}?
+            <h2 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '1.25rem', color: 'var(--color-text-light)' }}>
+              Ready to Discuss your {service.title}?
             </h2>
             <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.05rem', marginBottom: '2.5rem' }}>
-              [Contact Riffin Kunnath today to schedule a detailed requirements inspection at your convenience and receive a professional implementation quote.]
+              Contact Riffin Kunnath today to schedule a detailed requirements inspection at your convenience and receive a professional implementation quote.
             </p>
             <Link to="/contact" className="btn btn-primary" style={{ padding: '1rem 3rem' }}>
-              Get a Free Consultation &rarr;
+              Get a Free Setup Consultation <ArrowRight size={18} />
             </Link>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

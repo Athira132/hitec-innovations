@@ -4,7 +4,7 @@ import SectionHeader from '../components/SectionHeader';
 import { Phone, Mail, MapPin, Clock, MessageSquare, Map, Send, Check, ShieldCheck } from 'lucide-react';
 
 export default function Contact() {
-  const { contact } = siteConfig;
+  const { contact, heroes } = siteConfig;
   
   // Form states
   const [formData, setFormData] = useState({
@@ -75,16 +75,41 @@ export default function Contact() {
   return (
     <div className="page-top-spacer">
       {/* ---------------- HERO BANNER ---------------- */}
-      <section className="custom-hero-banner page-top-spacer" style={{ backgroundImage: `url(${siteConfig.heroes.contact})` }}>
-        <div className="container">
-          <div style={{ maxWidth: '650px' }}>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1rem', color: 'var(--color-text-light)' }}>
-              Contact Us
-            </h1>
-            <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', lineHeight: '1.6' }}>
-              Reach out to Hitec Innovations. Send us a message, locate our office, or contact Riffin Kunnath directly.
-            </p>
-          </div>
+      <section 
+        className="bg-dark-section section-padding hero-background-overlay" 
+        style={{ 
+          position: 'relative', 
+          overflow: 'hidden', 
+          textAlign: 'left',
+          backgroundImage: `url(${heroes.contact})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          minHeight: '280px',
+          display: 'flex',
+          alignItems: 'center'
+        }}
+      >
+        {/* Subtle dark overlay for text legibility */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'linear-gradient(to right, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.4) 100%)',
+          zIndex: 1
+        }}></div>
+
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <span className="section-label" style={{ color: 'var(--color-primary)', display: 'block', marginBottom: '0.75rem' }}>
+            Hitec Innovations
+          </span>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1rem', color: 'var(--color-text-light)' }}>
+            Contact Us
+          </h1>
+          <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', maxWidth: '600px', margin: 0 }}>
+            Reach out to Hitec Innovations. Send us a message, locate our Thrissur office, or contact Riffin Kunnath directly.
+          </p>
         </div>
       </section>
 
@@ -116,7 +141,7 @@ export default function Contact() {
                     <div style={{ color: 'var(--color-primary)', marginTop: '3px' }}><MapPin size={20} /></div>
                     <div>
                       <h4 style={{ fontSize: '0.95rem', fontWeight: 700 }}>Headquarters Address</h4>
-                      <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', marginTop: '0.25rem' }}>{contact.address}</p>
+                      <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', marginTop: '0.25rem', lineHeight: '1.4' }}>{contact.address}</p>
                     </div>
                   </div>
 

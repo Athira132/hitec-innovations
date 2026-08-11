@@ -2,24 +2,49 @@ import React from 'react';
 import { siteConfig } from '../data/siteConfig';
 import SectionHeader from '../components/SectionHeader';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, Image as ImageIcon, Sparkles } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 
 export default function Services() {
-  const { services } = siteConfig;
+  const { services, heroes } = siteConfig;
 
   return (
     <div className="page-top-spacer">
       {/* ---------------- HERO BANNER ---------------- */}
-      <section className="custom-hero-banner page-top-spacer" style={{ backgroundImage: `url(${siteConfig.heroes.about})` }}>
-        <div className="container">
-          <div style={{ maxWidth: '650px' }}>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1rem', color: 'var(--color-text-light)' }}>
-              Our Services
-            </h1>
-            <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', lineHeight: '1.6' }}>
-              Discover our high-performance technology portfolios designed to secure residential assets, automate entrances, track vehicles, and connect smart homes.
-            </p>
-          </div>
+      <section 
+        className="bg-dark-section section-padding hero-background-overlay" 
+        style={{ 
+          position: 'relative', 
+          overflow: 'hidden', 
+          textAlign: 'left',
+          backgroundImage: `url(${heroes.projects})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          minHeight: '280px',
+          display: 'flex',
+          alignItems: 'center'
+        }}
+      >
+        {/* Subtle dark overlay for text legibility */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'linear-gradient(to right, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.4) 100%)',
+          zIndex: 1
+        }}></div>
+
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <span className="section-label" style={{ color: 'var(--color-primary)', display: 'block', marginBottom: '0.75rem' }}>
+            Hitec Innovations
+          </span>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1rem', color: 'var(--color-text-light)' }}>
+            Our Core Services
+          </h1>
+          <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', maxWidth: '600px', margin: 0 }}>
+            Discover our high-performance technology portfolios designed to secure premises, automate gateways, track vehicles, and configure smart living spaces.
+          </p>
         </div>
       </section>
 
@@ -52,10 +77,21 @@ export default function Services() {
                   <div className="grid-2" style={{ gap: '3rem', alignItems: 'center', width: '100%', gridTemplateAreas: isEven ? '"content visual"' : '"visual content"' }}>
                     {/* Visual Card Column */}
                     <div style={{ gridArea: 'visual' }}>
-                      <div className="img-placeholder" style={{ minHeight: '300px', boxShadow: 'var(--shadow-sm)' }}>
-                        <ImageIcon size={40} style={{ opacity: 0.3, marginBottom: '0.75rem' }} />
-                        <span className="placeholder-title" style={{ fontSize: '0.85rem' }}>{service.imagePlaceholder}</span>
-                        <span className="placeholder-size">Recommended: 900 x 600 px</span>
+                      <div 
+                        style={{ 
+                          borderRadius: 'var(--border-radius-md)', 
+                          overflow: 'hidden', 
+                          boxShadow: 'var(--shadow-sm)',
+                          width: '100%',
+                          aspectRatio: '3/2',
+                          border: '1px solid var(--color-light-border)'
+                        }}
+                      >
+                        <img 
+                          src={service.image} 
+                          alt={service.title} 
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
                       </div>
                     </div>
 
@@ -64,7 +100,7 @@ export default function Services() {
                       <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-dark)', marginBottom: '1rem' }}>
                         {service.title}
                       </h3>
-                      <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '1rem', marginBottom: '1.5rem' }}>
+                      <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '1rem', marginBottom: '1.5rem', lineHeight: '1.6' }}>
                         {service.longDesc}
                       </p>
 
@@ -82,7 +118,7 @@ export default function Services() {
                       </ul>
 
                       <Link to={`/services/${service.id}`} className="btn btn-primary">
-                        Learn More <ArrowRight size={16} />
+                        Explore Landing Page <ArrowRight size={16} />
                       </Link>
                     </div>
                   </div>
@@ -101,7 +137,7 @@ export default function Services() {
           left: '-10%',
           width: '40vw',
           height: '40vw',
-          background: 'radial-gradient(circle, hsla(165, 85%, 40%, 0.1) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, hsla(354, 75%, 45%, 0.1) 0%, transparent 60%)',
           pointerEvents: 'none'
         }}></div>
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -110,10 +146,10 @@ export default function Services() {
               Need a Custom Technology Implementation?
             </h2>
             <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', marginBottom: '2.5rem' }}>
-              [Urge the user to get in touch. E.g. Hitec Innovations specializes in designing customized telemetry pipelines, dashboard servers, and localized gateway firmware tailored to your specifications.]
+              Consult with Hitec Innovations today. We will schedule a direct site consultation in Thrissur to inspect your gate, vehicle, or camera requirements and draft a formal scope document.
             </p>
             <Link to="/contact" className="btn btn-primary" style={{ padding: '1rem 3rem' }}>
-              Consult with Our Engineers <ArrowRight size={18} />
+              Start Your Service Consultation <ArrowRight size={18} />
             </Link>
           </div>
         </div>

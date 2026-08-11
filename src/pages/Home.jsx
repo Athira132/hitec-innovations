@@ -6,7 +6,7 @@ import ServiceCard from '../components/ServiceCard';
 import ProjectCard from '../components/ProjectCard';
 import { 
   Award, CheckCircle, Users, ShieldAlert, ArrowRight, ShieldCheck, 
-  Settings, Zap, Check, Image as ImageIcon 
+  Settings, Zap, Check 
 } from 'lucide-react';
 
 const iconMap = {
@@ -17,11 +17,10 @@ const iconMap = {
 };
 
 export default function Home() {
-  const { homeHero, aboutIntro, stats, services, projects, processes, whyChooseUs, ctaBanner, brands } = siteConfig;
+  const { homeHero, aboutIntro, stats, services, projects, processes, whyChooseUs, ctaBanner, brands, homeImages } = siteConfig;
 
   return (
     <div>
-      {/* ---------------- SECTION 1: HERO BANNER ---------------- */}
       <style>{`
         .brands-marquee-grid {
           display: grid;
@@ -43,7 +42,6 @@ export default function Home() {
           border: 1px solid var(--color-light-border);
           border-radius: var(--border-radius-md);
           display: flex;
-          flex-direction: column;
           align-items: center;
           justify-content: center;
           transition: var(--transition-fast);
@@ -54,39 +52,86 @@ export default function Home() {
           box-shadow: var(--shadow-sm);
           transform: translateY(-2px);
         }
+        .brand-logo-img {
+          max-width: 85%;
+          max-height: 85%;
+          object-fit: contain;
+        }
       `}</style>
       
-      <section className="custom-hero-banner page-top-spacer" style={{ backgroundImage: `url(${siteConfig.heroes.home})` }}>
-        <div className="container">
-          <div style={{ maxWidth: '650px' }}>
-            <span className="section-label" style={{ color: 'var(--color-primary)', display: 'block', marginBottom: '1.25rem', textTransform: 'uppercase' }}>
-              {siteConfig.companyName}
-            </span>
-            <h1 style={{ 
-              fontSize: 'clamp(2.3rem, 4.5vw, 3.8rem)', 
-              fontWeight: 800, 
-              lineHeight: 1.1, 
-              marginBottom: '1.5rem',
-              letterSpacing: '-1px',
-              color: 'var(--color-text-light)'
-            }}>
-              {homeHero.heading}
-            </h1>
-            <p style={{ 
-              fontSize: '1.1rem', 
-              color: 'var(--color-text-muted-light)', 
-              marginBottom: '2.5rem',
-              lineHeight: '1.7'
-            }}>
-              {homeHero.subheading}
-            </p>
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <Link to="/services" className="btn btn-primary">
-                {homeHero.primaryCTA}
-              </Link>
-              <Link to="/contact" className="btn btn-secondary">
-                {homeHero.secondaryCTA}
-              </Link>
+      {/* ---------------- SECTION 1: HERO BANNER (UNCHANGED) ---------------- */}
+      <section className="bg-dark-section page-top-spacer" style={{ position: 'relative', overflow: 'hidden', paddingBottom: '5rem' }}>
+        {/* Glow Effects */}
+        <div style={{
+          position: 'absolute',
+          top: '-10%',
+          right: '-10%',
+          width: '50vw',
+          height: '50vw',
+          background: 'radial-gradient(circle, hsla(354, 75%, 45%, 0.12) 0%, transparent 70%)',
+          pointerEvents: 'none'
+        }}></div>
+
+        <div className="container" style={{ position: 'relative', zIndex: 2, padding: '4rem 0' }}>
+          <span className="section-label" style={{ color: 'var(--color-primary)', display: 'block', marginBottom: '1.5rem' }}>
+            {siteConfig.companyName}
+          </span>
+          <div className="grid-2" style={{ alignItems: 'start' }}>
+            {/* Left Column: Text Content */}
+            <div style={{ paddingRight: '1rem' }}>
+              <h1 style={{ 
+                fontSize: 'clamp(2.3rem, 4.5vw, 3.8rem)', 
+                fontWeight: 800, 
+                lineHeight: 1.1, 
+                marginBottom: '1.5rem',
+                letterSpacing: '-1px'
+              }}>
+                {homeHero.heading}
+              </h1>
+              <p style={{ 
+                fontSize: '1.1rem', 
+                color: 'var(--color-text-muted-light)', 
+                marginBottom: '2.5rem',
+                maxWidth: '560px',
+                lineHeight: '1.7'
+              }}>
+                {homeHero.subheading}
+              </p>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <Link to="/services" className="btn btn-primary">
+                  {homeHero.primaryCTA}
+                </Link>
+                <Link to="/contact" className="btn btn-secondary">
+                  {homeHero.secondaryCTA}
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column: Hero Image */}
+            <div>
+              <div 
+                style={{ 
+                  borderRadius: 'var(--border-radius-md)', 
+                  overflow: 'hidden', 
+                  boxShadow: 'var(--shadow-lg)',
+                  width: '100%',
+                  aspectRatio: '16/10',
+                  border: '1px solid var(--color-dark-border)',
+                  display: 'block'
+                }}
+              >
+                <img 
+                  src="https://i.ibb.co/MxLNCnpg/image.png" 
+                  alt="Hitec Innovations Technology Infrastructure" 
+                  loading="eager"
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'cover',
+                    display: 'block'
+                  }} 
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -98,10 +143,21 @@ export default function Home() {
           <div className="grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
             {/* Left Side: Image */}
             <div>
-              <div className="img-placeholder tall" style={{ minHeight: '380px', boxShadow: 'var(--shadow-md)' }}>
-                <ImageIcon size={48} style={{ opacity: 0.3, marginBottom: '1rem' }} />
-                <span className="placeholder-title">[About Section Corporate Image]</span>
-                <span className="placeholder-size">Recommended: 800 x 1000 px</span>
+              <div 
+                style={{ 
+                  borderRadius: 'var(--border-radius-md)', 
+                  overflow: 'hidden', 
+                  boxShadow: 'var(--shadow-md)',
+                  width: '100%',
+                  aspectRatio: '4/3',
+                  border: '1px solid var(--color-light-border)'
+                }}
+              >
+                <img 
+                  src={homeImages.aboutHome} 
+                  alt="About Hitec Innovations" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
               </div>
             </div>
 
@@ -109,10 +165,10 @@ export default function Home() {
             <div>
               <span className="section-label">{aboutIntro.label}</span>
               <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>{aboutIntro.heading}</h2>
-              <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '1.05rem', marginBottom: '1.5rem' }}>
+              <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '1.05rem', marginBottom: '1.5rem', lineHeight: '1.6' }}>
                 {aboutIntro.introText}
               </p>
-              <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '0.95rem', marginBottom: '2rem' }}>
+              <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '0.95rem', marginBottom: '2rem', lineHeight: '1.6' }}>
                 {aboutIntro.detailedDesc}
               </p>
 
@@ -124,7 +180,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.25rem' }}>Our Mission</h4>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted-dark)' }}>{aboutIntro.mission}</p>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted-dark)', lineHeight: '1.4' }}>{aboutIntro.mission}</p>
                   </div>
                 </div>
                 <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'start' }}>
@@ -133,7 +189,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.25rem' }}>Our Vision</h4>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted-dark)' }}>{aboutIntro.vision}</p>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted-dark)', lineHeight: '1.4' }}>{aboutIntro.vision}</p>
                   </div>
                 </div>
               </div>
@@ -204,33 +260,12 @@ export default function Home() {
           <div className="brands-marquee-grid">
             {brands.map((brand) => (
               <div key={brand.name} className="brand-logo-card">
-                <div 
-                  className="img-placeholder square"
-                  style={{
-                    width: '45px',
-                    height: '45px',
-                    borderRadius: 'var(--border-radius-sm)',
-                    border: '1px solid var(--color-light-border)',
-                    backgroundColor: 'var(--color-light-surface)',
-                    marginBottom: '0.25rem',
-                    padding: '0.2rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <ImageIcon size={14} style={{ opacity: 0.3, color: 'var(--color-text-muted-dark)' }} />
-                  <span style={{ fontSize: '0.45rem', color: 'var(--color-text-muted-dark)' }}>{brand.imagePlaceholder}</span>
-                </div>
-                <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--color-dark)' }}>
-                  {brand.name}
-                </span>
+                <img src={brand.image} alt={brand.name} className="brand-logo-img" />
               </div>
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-            <Link to="/brands" className="btn-text">
+            <Link to="/services/cctv-installation" className="btn-text">
               View Brand Partnership details <ArrowRight size={16} />
             </Link>
           </div>
@@ -245,7 +280,7 @@ export default function Home() {
             <div>
               <span className="section-label">Company Advantages</span>
               <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>{whyChooseUs.heading}</h2>
-              <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '1rem', marginBottom: '2.5rem' }}>
+              <p style={{ color: 'var(--color-text-muted-dark)', fontSize: '1rem', marginBottom: '2.5rem', lineHeight: '1.6' }}>
                 {whyChooseUs.description}
               </p>
 
@@ -268,7 +303,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.25rem' }}>{pillar.title}</h4>
-                      <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)' }}>{pillar.desc}</p>
+                      <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted-dark)', lineHeight: '1.4' }}>{pillar.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -277,10 +312,21 @@ export default function Home() {
 
             {/* Right Visual Image */}
             <div>
-              <div className="img-placeholder tall" style={{ minHeight: '420px', boxShadow: 'var(--shadow-md)' }}>
-                <ImageIcon size={48} style={{ opacity: 0.3, marginBottom: '1rem' }} />
-                <span className="placeholder-title">[Advantage Visual Placeholder]</span>
-                <span className="placeholder-size">Recommended: 800 x 1000 px</span>
+              <div 
+                style={{ 
+                  borderRadius: 'var(--border-radius-md)', 
+                  overflow: 'hidden', 
+                  boxShadow: 'var(--shadow-md)',
+                  width: '100%',
+                  aspectRatio: '4/3',
+                  border: '1px solid var(--color-light-border)'
+                }}
+              >
+                <img 
+                  src={homeImages.whyChooseUs} 
+                  alt="Hitec Innovations Diagnostics" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
               </div>
             </div>
           </div>
@@ -314,7 +360,7 @@ export default function Home() {
                   {process.title}
                 </h3>
                 {/* Description */}
-                <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', maxWidth: '280px', margin: '0 auto' }}>
+                <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted-dark)', maxWidth: '280px', margin: '0 auto', lineHeight: '1.5' }}>
                   {process.desc}
                 </p>
               </div>
@@ -339,7 +385,7 @@ export default function Home() {
                 title={project.title}
                 category={project.category}
                 shortDesc={project.shortDesc}
-                imagePlaceholder={project.imagePlaceholder}
+                image={project.image}
               />
             ))}
           </div>
