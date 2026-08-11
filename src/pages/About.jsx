@@ -50,36 +50,69 @@ export default function About() {
           position: 'relative', 
           overflow: 'hidden', 
           textAlign: 'left',
-          backgroundImage: `url(${heroes.about})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
           minHeight: '340px',
           display: 'flex',
           alignItems: 'center'
         }}
       >
-        {/* Dark overlay for text legibility over the raw visiting card background */}
+        {/* Subtle radial glow background */}
         <div style={{
           position: 'absolute',
           top: 0,
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(to right, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.6) 100%)',
-          zIndex: 1,
+          background: 'radial-gradient(circle at right, hsla(165, 85%, 40%, 0.12) 0%, transparent 60%)',
           pointerEvents: 'none'
         }}></div>
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <span className="section-label" style={{ color: 'var(--color-primary)', display: 'block', marginBottom: '0.75rem' }}>
-            Who We Are
-          </span>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1.25rem', color: 'var(--color-text-light)' }}>
-            About Us
-          </h1>
-          <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', maxWidth: '600px', margin: 0, lineHeight: '1.7' }}>
-            Learn more about Hitec Innovations, our core philosophies, operational values, and our dedication to secure technology integrations in Kerala.
-          </p>
+          <div className="grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
+            {/* Left side: Heading & Text */}
+            <div>
+              <span className="section-label" style={{ color: 'var(--color-primary)', display: 'block', marginBottom: '0.75rem' }}>
+                Who We Are
+              </span>
+              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, marginBottom: '1.25rem', color: 'var(--color-text-light)' }}>
+                About Us
+              </h1>
+              <p style={{ color: 'var(--color-text-muted-light)', fontSize: '1.1rem', maxWidth: '600px', margin: 0, lineHeight: '1.7' }}>
+                Learn more about Hitec Innovations, our core philosophies, operational values, and our dedication to secure technology integrations in Kerala.
+              </p>
+            </div>
+            
+            {/* Right side: Large rectangular image box showing raw logo image */}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div 
+                style={{ 
+                  borderRadius: 'var(--border-radius-md)', 
+                  overflow: 'hidden', 
+                  boxShadow: '0 12px 40px rgba(0, 0, 0, 0.4)',
+                  border: '1px solid var(--color-dark-border)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                  padding: '1.25rem',
+                  width: '100%',
+                  maxWidth: '440px',
+                  aspectRatio: '1.63',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <img 
+                  src="/images/logo-raw.png" 
+                  alt="Hitec Innovations Brand Stamp" 
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'contain',
+                    borderRadius: 'var(--border-radius-sm)',
+                    display: 'block'
+                  }} 
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
