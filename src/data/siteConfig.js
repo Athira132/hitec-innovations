@@ -39,7 +39,7 @@ export const siteConfig = {
   aboutIntro: {
     label: "About Hitec Innovations",
     heading: "Smart Technology. Reliable Security.",
-    introText: "Founded in 2014, Hitec Innovations specializes in high-quality electronic security, automation, and fleet tracking systems to clients across Kerala. Centered on engineering integrity and local support, we integrate solutions for residential villas and large-scale commercial facilities in Thrissur and surrounding regions.",
+    introText: "Established in 2014, Hitec Innovations specializes in high-quality electronic security, automation, and fleet tracking systems to clients across Kerala. Centered on engineering integrity and local support, we integrate solutions for residential villas and large-scale commercial facilities in Thrissur and surrounding regions.",
     detailedDesc: "Our service delivery covers professional cable laying, calibration audits, remote networking setup, and regular maintenance checks. By collaborating with leading global hardware developers, we guarantee that all integrated cameras, gate motors, and location transceivers deliver stable logs and secure operations.",
     mission: "To empower homeowners and businesses across Kerala by delivering secure, scalable, and innovative digital infrastructure that drives growth.",
     vision: "To be the leading catalyst for technological transformation and automated security solutions in Kerala, recognized for engineering excellence."
