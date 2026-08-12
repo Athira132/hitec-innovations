@@ -57,6 +57,34 @@ export default function Services() {
             subtitle="We provide specialized engineering services backed by strict quality assurance, robust protocols, and modern code practices."
           />
 
+          <style>{`
+            .services-list-grid {
+              display: grid;
+              grid-template-columns: 1.1fr 0.9fr;
+              gap: 4rem;
+              align-items: center;
+            }
+            .services-list-grid.even {
+              grid-template-areas: "content visual";
+            }
+            .services-list-grid.odd {
+              grid-template-areas: "visual content";
+            }
+            .services-visual-area {
+              grid-area: visual;
+            }
+            .services-content-area {
+              grid-area: content;
+            }
+            @media (max-width: 991px) {
+              .services-list-grid {
+                grid-template-columns: 1fr;
+                grid-template-areas: "visual" "content" !important;
+                gap: 2rem;
+              }
+            }
+          `}</style>
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
             {services.map((service, index) => {
               const isEven = index % 2 === 0;
@@ -67,16 +95,12 @@ export default function Services() {
                   style={{ 
                     padding: '2.5rem', 
                     borderRadius: 'var(--border-radius-lg)',
-                    display: 'grid',
-                    gridTemplateColumns: '1fr',
-                    gap: '3rem',
-                    alignItems: 'center'
+                    overflow: 'hidden'
                   }}
                 >
-                  {/* Outer grid for desktop layout changes */}
-                  <div className="grid-2" style={{ gap: '3rem', alignItems: 'center', width: '100%', gridTemplateAreas: isEven ? '"content visual"' : '"visual content"' }}>
+                  <div className={`services-list-grid ${isEven ? 'even' : 'odd'}`}>
                     {/* Visual Card Column */}
-                    <div style={{ gridArea: 'visual' }}>
+                    <div className="services-visual-area">
                       <div 
                         style={{ 
                           borderRadius: 'var(--border-radius-md)', 
@@ -96,7 +120,7 @@ export default function Services() {
                     </div>
 
                     {/* Content Column */}
-                    <div style={{ gridArea: 'content' }}>
+                    <div className="services-content-area">
                       <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-dark)', marginBottom: '1rem' }}>
                         {service.title}
                       </h3>

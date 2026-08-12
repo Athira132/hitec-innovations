@@ -98,7 +98,7 @@ export default function Home() {
           pointerEvents: 'none'
         }}></div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 2, padding: '4rem 0' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '4rem', paddingBottom: '4rem' }}>
           <span className="section-label" style={{ color: 'var(--color-primary)', display: 'block', marginBottom: '1.5rem' }}>
             {siteConfig.companyName}
           </span>

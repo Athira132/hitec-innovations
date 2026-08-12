@@ -194,9 +194,9 @@ export default function Navbar() {
             aria-label="Toggle Navigation Menu"
             aria-expanded={isOpen}
           >
-            <span className="hamburger-line" style={{ backgroundColor: isScrolled || isOpen ? 'var(--color-dark)' : 'var(--color-light)' }}></span>
-            <span className="hamburger-line" style={{ backgroundColor: isScrolled || isOpen ? 'var(--color-dark)' : 'var(--color-light)' }}></span>
-            <span className="hamburger-line" style={{ backgroundColor: isScrolled || isOpen ? 'var(--color-dark)' : 'var(--color-light)' }}></span>
+            <span className="hamburger-line" style={{ backgroundColor: (isScrolled || isOpen || location.pathname !== '/') ? 'var(--color-dark)' : 'var(--color-light)' }}></span>
+            <span className="hamburger-line" style={{ backgroundColor: (isScrolled || isOpen || location.pathname !== '/') ? 'var(--color-dark)' : 'var(--color-light)' }}></span>
+            <span className="hamburger-line" style={{ backgroundColor: (isScrolled || isOpen || location.pathname !== '/') ? 'var(--color-dark)' : 'var(--color-light)' }}></span>
           </button>
         </div>
       </header>
@@ -228,11 +228,6 @@ export default function Navbar() {
                 {mobileDropdownOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
               </button>
               <ul className={`mobile-dropdown-list ${mobileDropdownOpen ? 'open' : ''}`}>
-                <li>
-                  <NavLink to="/services" className={({ isActive }) => `mobile-dropdown-link ${isActive ? 'active' : ''}`} end>
-                    All Services Overview
-                  </NavLink>
-                </li>
                 {servicesItems.map((item) => (
                   <li key={item.path}>
                     <NavLink 
