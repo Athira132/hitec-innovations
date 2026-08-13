@@ -4,7 +4,7 @@ export const siteConfig = {
   logo: "/images/logo-cropped.png",
   heroes: {
     about: "/images/hero-about-new.png",
-    cctv: "https://i.ibb.co/MkFDNFVq/Chat-GPT-Image-Aug-13-2026-05-56-33-PM.png",
+    cctv: "/images/hero-cctv.jpg",
     gate: "/images/hero-gate.jpg",
     tracking: "/images/hero-tracking.jpg",
     homeAuto: "/images/hero-home-auto.jpg",
@@ -72,7 +72,7 @@ export const siteConfig = {
       title: "CCTV Installation",
       shortDesc: "Detailed security camera installations and surveillance setups for residential and commercial premises. We work with leading brands to deliver clear, reliable video feeds.",
       longDesc: "Hitec Innovations provides tailored, professional security camera installations in Thrissur and across Kerala. All hardware integrations are customized to protect property security, residential rooms, and commercial yards. We perform full site analysis to determine camera placements, minimize blind spots, and setup secure local and mobile streaming servers.",
-      image: "https://i.ibb.co/CqcFRYw/Chat-GPT-Image-Aug-13-2026-05-55-24-PM.png",
+      image: "https://i.ibb.co/MkFDNFVq/Chat-GPT-Image-Aug-13-2026-05-56-33-PM.png",
       benefits: [
         "Residential Security: Keep your home and family safe with 24/7 high-definition monitoring and instant alerts.",
         "Commercial Security: Protect warehouse assets, monitor retail floors, and maintain operational logs.",
