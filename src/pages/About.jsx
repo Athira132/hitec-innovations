@@ -100,7 +100,7 @@ export default function About() {
                 }}
               >
                 <img 
-                  src="/images/service-cctv.jpg" 
+                  src="https://i.ibb.co/CqcFRYw/Chat-GPT-Image-Aug-13-2026-05-55-24-PM.png" 
                   alt="Hitec Innovations CCTV Installation" 
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />

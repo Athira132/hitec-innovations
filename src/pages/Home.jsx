@@ -85,79 +85,63 @@ export default function Home() {
       
       `}</style>
       
-      {/* ---------------- SECTION 1: HERO BANNER (UNCHANGED) ---------------- */}
-      <section className="bg-dark-section page-top-spacer" style={{ position: 'relative', overflow: 'hidden', paddingBottom: '5rem' }}>
-        {/* Glow Effects */}
+      {/* ---------------- SECTION 1: HERO BANNER ---------------- */}
+      <section 
+        className="bg-dark-section page-top-spacer" 
+        style={{ 
+          position: 'relative', 
+          overflow: 'hidden', 
+          backgroundImage: 'url("https://i.ibb.co/276HJyqC/Chat-GPT-Image-Aug-13-2026-05-51-59-PM.png")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center right',
+          minHeight: '600px',
+          display: 'flex',
+          alignItems: 'center'
+        }}
+      >
+        {/* Subtle dark/black gradient overlay from left side to right side */}
         <div style={{
           position: 'absolute',
-          top: '-10%',
-          right: '-10%',
-          width: '50vw',
-          height: '50vw',
-          background: 'radial-gradient(circle, hsla(354, 75%, 45%, 0.12) 0%, transparent 70%)',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.15) 100%)',
+          zIndex: 1,
           pointerEvents: 'none'
         }}></div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '4rem', paddingBottom: '4rem' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '5rem', paddingBottom: '5rem' }}>
           <span className="section-label" style={{ color: 'var(--color-primary)', display: 'block', marginBottom: '1.5rem' }}>
             {siteConfig.companyName}
           </span>
-          <div className="grid-2" style={{ alignItems: 'start' }}>
-            {/* Left Column: Text Content */}
-            <div style={{ paddingRight: '1rem' }}>
-              <h1 style={{ 
-                fontSize: 'clamp(2.3rem, 4.5vw, 3.8rem)', 
-                fontWeight: 800, 
-                lineHeight: 1.1, 
-                marginBottom: '1.5rem',
-                letterSpacing: '-1px'
-              }}>
-                {homeHero.heading}
-              </h1>
-              <p style={{ 
-                fontSize: '1.1rem', 
-                color: 'var(--color-text-muted-light)', 
-                marginBottom: '2.5rem',
-                maxWidth: '560px',
-                lineHeight: '1.7'
-              }}>
-                {homeHero.subheading}
-              </p>
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <Link to="/services" className="btn btn-primary">
-                  {homeHero.primaryCTA}
-                </Link>
-                <Link to="/contact" className="btn btn-secondary">
-                  {homeHero.secondaryCTA}
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Column: Hero Image */}
-            <div>
-              <div 
-                style={{ 
-                  borderRadius: 'var(--border-radius-md)', 
-                  overflow: 'hidden', 
-                  boxShadow: 'var(--shadow-lg)',
-                  width: '100%',
-                  aspectRatio: '16/10',
-                  border: '1px solid var(--color-dark-border)',
-                  display: 'block'
-                }}
-              >
-                <img 
-                  src="https://i.ibb.co/MxLNCnpg/image.png" 
-                  alt="Hitec Innovations Technology Infrastructure" 
-                  loading="eager"
-                  style={{ 
-                    width: '100%', 
-                    height: '100%', 
-                    objectFit: 'cover',
-                    display: 'block'
-                  }} 
-                />
-              </div>
+          <div style={{ maxWidth: '650px' }}>
+            <h1 style={{ 
+              fontSize: 'clamp(2.3rem, 4.5vw, 3.8rem)', 
+              fontWeight: 800, 
+              lineHeight: 1.1, 
+              marginBottom: '1.5rem',
+              letterSpacing: '-1px',
+              color: 'var(--color-text-light)'
+            }}>
+              {homeHero.heading}
+            </h1>
+            <p style={{ 
+              fontSize: '1.1rem', 
+              color: 'var(--color-text-muted-light)', 
+              marginBottom: '2.5rem',
+              maxWidth: '560px',
+              lineHeight: '1.7'
+            }}>
+              {homeHero.subheading}
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <Link to="/services" className="btn btn-primary">
+                {homeHero.primaryCTA}
+              </Link>
+              <Link to="/contact" className="btn btn-secondary">
+                {homeHero.secondaryCTA}
+              </Link>
             </div>
           </div>
         </div>
