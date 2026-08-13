@@ -3,7 +3,7 @@ export const siteConfig = {
   companySlogan: "Smart Technology • Security • Automation",
   logo: "/images/logo-cropped.png",
   heroes: {
-    about: "https://i.ibb.co/b52Z6JSn/Gemini-Generated-Image-oxberioxberioxbe.png",
+    about: "https://i.ibb.co/5hny1FNV/Gemini-Generated-Image-oxberioxberioxbe.png",
     cctv: "/images/hero-cctv.jpg",
     gate: "/images/hero-gate.jpg",
     tracking: "/images/hero-tracking.jpg",
