@@ -849,7 +849,7 @@ button {
   }
   
   .page-top-spacer {
-    padding-top: 70px !important; /* Match mobile scrolled nav height */
+    padding-top: var(--nav-height) !important;
   }
 }
 

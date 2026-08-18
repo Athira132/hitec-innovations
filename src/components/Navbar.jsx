@@ -123,13 +123,29 @@ export default function Navbar() {
         
         /* Responsive logo size variables */
         :root {
-          --logo-height: 48px;
-          --logo-width: 140px;
+          --logo-height: 56px;
+          --logo-width: 160px;
+          --nav-height: 85px;
         }
         @media (min-width: 768px) {
           :root {
-            --logo-height: 64px;
-            --logo-width: 180px;
+            --logo-height: 80px;
+            --logo-width: 220px;
+            --nav-height: 105px;
+          }
+        }
+        .navbar-header.scrolled {
+          height: 75px !important;
+        }
+        .navbar-header.scrolled img {
+          height: 48px !important;
+        }
+        @media (min-width: 768px) {
+          .navbar-header.scrolled {
+            height: 85px !important;
+          }
+          .navbar-header.scrolled img {
+            height: 68px !important;
           }
         }
       `}</style>
