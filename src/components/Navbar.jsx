@@ -123,13 +123,13 @@ export default function Navbar() {
         
         /* Responsive logo size variables */
         :root {
-          --logo-height: 38px;
-          --logo-width: 112px;
+          --logo-height: 48px;
+          --logo-width: 140px;
         }
         @media (min-width: 768px) {
           :root {
-            --logo-height: 48px;
-            --logo-width: 142px;
+            --logo-height: 64px;
+            --logo-width: 180px;
           }
         }
       `}</style>

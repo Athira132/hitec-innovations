@@ -29,8 +29,8 @@ export default function Footer() {
             <div style={{ marginBottom: '1.25rem' }}>
               <Link to="/" style={{ display: 'inline-block', textDecoration: 'none' }}>
                 <div style={{
-                  width: '58px',
-                  height: '58px',
+                  width: '68px',
+                  height: '68px',
                   borderRadius: '50%',
                   backgroundColor: '#ffffff',
                   display: 'flex',
