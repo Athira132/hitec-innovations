@@ -123,14 +123,14 @@ export default function Navbar() {
         
         /* Responsive logo size variables */
         :root {
-          --logo-height: 56px;
-          --logo-width: 160px;
+          --logo-height: 68px;
+          --logo-width: 180px;
           --nav-height: 65px;
         }
         @media (min-width: 768px) {
           :root {
-            --logo-height: 72px;
-            --logo-width: 220px;
+            --logo-height: 90px;
+            --logo-width: 240px;
             --nav-height: 80px;
           }
         }
@@ -138,22 +138,22 @@ export default function Navbar() {
           height: 55px !important;
         }
         .navbar-header.scrolled img {
-          height: 48px !important;
+          height: 56px !important;
         }
         @media (min-width: 768px) {
           .navbar-header.scrolled {
             height: 65px !important;
           }
           .navbar-header.scrolled img {
-            height: 58px !important;
+            height: 76px !important;
           }
         }
         .nav-container {
-          padding-left: 0.25rem !important;
+          padding-left: 0.15rem !important;
         }
         @media (min-width: 768px) {
           .nav-container {
-            padding-left: 0.5rem !important;
+            padding-left: 0.25rem !important;
           }
         }
       `}</style>
@@ -161,7 +161,7 @@ export default function Navbar() {
       <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container nav-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Rectangular Logo Only (No circle!) */}
-          <NavLink to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          <NavLink to="/" style={{ display: 'flex', alignItems: 'flex-start', alignSelf: 'flex-start', paddingTop: '4px', textDecoration: 'none', position: 'relative', zIndex: 1020 }}>
             <img 
               src={siteConfig.logo} 
               alt="Hitec Innovations" 
