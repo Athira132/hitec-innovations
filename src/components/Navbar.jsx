@@ -148,6 +148,14 @@ export default function Navbar() {
             height: 90px !important;
           }
         }
+        .nav-container {
+          padding-left: 0.5rem !important;
+        }
+        @media (min-width: 768px) {
+          .nav-container {
+            padding-left: 1rem !important;
+          }
+        }
       `}</style>
 
       <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
